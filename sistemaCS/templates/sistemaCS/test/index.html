@@ -61,6 +61,10 @@
        background: deeppink;
      }
 
+     #p5 {
+       left: 400%;
+       background: deeppink;
+     }
      ul {
       position: fixed; 
       z-index: 1;
@@ -77,16 +81,21 @@
   #t4:target .page#p4 {
     transform: translateX(-290%);
   }
+  #t5:target .page#p5 {
+    transform: translateX(-390%);
+  }
 
   #t2:target .page#p1, 
   #t3:target .page#p1,
-  #t4:target .page#p1 {
+  #t4:target .page#p1,
+  #t5:target .page#p1 {
     background: black;
   }
 
   #t2:target .page#p1 .icon, 
   #t3:target .page#p1 .icon,
-  #t4:target .page#p1 .icon {
+  #t4:target .page#p1 .icon,
+  #t5:target .page#p1 .icon {
     -webkit-filter: blur(3px);
     filter: blur(3px);
   }
@@ -107,7 +116,8 @@
 
   #t2:target ul .icon,
   #t3:target ul .icon,
-  #t4:target ul .icon {
+  #t4:target ul .icon, 
+  #t5:target ul .icon {
     transform: scale(.6); 
     transition-delay: .25s;
   }
@@ -121,6 +131,10 @@
   }
 
   #t4:target #cuatro {
+    transform: scale(1.2) !important;
+  }
+
+  #t5:target #cinco {
     transform: scale(1.2) !important;
   }
 
@@ -185,15 +199,17 @@
 
   .sContainer {
     position: absolute;
-    top: 0;
+    top: 25%;
     bottom: 0;
     right: 10%;
     left: 0;
     margin: auto;
     margin-left: 5%;
     transform: translateX(180%);
-    overflow-y: auto; 
+  }
 
+  #myCarousel {
+    margin-top: 25%;
   }
 
   .page#p1 .icon {
@@ -223,7 +239,10 @@
     transform: translateX(0) !important;
     transition-delay: 1s;
   }
-
+  #t5:target .page#p5 .icon {
+    transform: translateX(0) !important;
+    transition-delay: 1s;
+  }
   .credit{
    position: absolute;
    bottom: 0;
@@ -235,6 +254,11 @@
  .credit a {
    color: #fff
  }
+
+ .toggled {
+
+  transform: translateX(0) !important;
+}
 
 </style>
 
@@ -250,12 +274,14 @@
    <div class="ct" id="t2">
      <div class="ct" id="t3">
        <div class="ct" id="t4">
+        <div class="ct" id="t5">
         <section>  
          <ul>
            <a href="#t1"><li class="icon fa fa-home" id="uno"></li></a>
            <a href="#t2"><li class="icon fa fa-keyboard-o" id="dos"></li></a>
            <a href="#t3"><li class="icon fa fa-coffee" id="tres"></li></a>
            <a href="#t4"><li class="icon fa fa-dribbble" id="cuatro"></li></a>
+           <a href="#t5"><li class="icon fa fa-coffee" id="cinco"></li></a>
          </ul>
          <div class="page" id="p1">
            <li class="icon fa fa-home"><span class="title">Home</span><span class="hint">Like this pen to see the magic!...<br/> Just kidding, it won't happen anything but I'll be really happy If you do so.</span></li>   
@@ -263,130 +289,168 @@
          <div class="page" id="p2">
           <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
         </div>  
-        <div class="page" id="p3">
-          <div class="container-fluid sContainer">
-            <div class="row">
-              <div class="col-md-12">
-                <center>
-                  <img src="gatsby_logo.png" width="20%">
-                  <div>
-                    <h1>
-                      CompuMaster
-                    </h1>
-                    <p>
+        <div class="page" id="p3" style="overflow-y: auto;">
+          <div class="row">
+            <div class="col-md-12">
+              <center>
+                <img src="gatsby_logo.png" width="20%">
+                      <p>
                       El profe más chévere.
                     </p>
-                    <p>
-                    </p>
-                  </div>
-                </center>
-              </div>
+              </center>
             </div>
+          </div>
+          <div class="container-fluid sContainer">
+                      <h2>
+              <!--Nominados-->
+            </h2> 
             <div class="row">
-              <div class="col-md-4">
-                <h2>
-                  Nominados
-                </h2>
-                  <ion-content>
+              <div class="col-md-8 col-sm-push-4">
+                <!-- Full Page Image Background Carousel Header -->
+                <div id="myCarousel" class="carousel slide" style="transform: translateX(700%);">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
 
-                  <div class="list">
+                  <!-- Wrapper for Slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <!-- Set the first background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=Slide One"> </center>
 
-                   <!--href="#/{{item.id}}"-->
-                   <a ng-repeat="item in items"  onclick="showGallery(1)"
-                   class="item item-thumbnail-left">
+                    </div>
+                    <div class="item">
+                      <!-- Set the second background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=Slide Two"> </center>
 
-                   <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-                   <h2>Juan Lopez</h2>
-                   <h4>Por que lo merece...</h4>
-                 </a>
-                 <a ng-repeat="item in items" onclick="showGallery(2)"
-                 class="item item-thumbnail-left">
-
-                 <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-                 <h2>Pedro Perez</h2>
-                 <h4>Por que lo merece...</h4>
-               </a>
-                </div>
-                </ion-content>
-              </div>
-
-              <div class="col-md-4">
-              <h2><br></h2>
-    <!-- Full Page Image Background Carousel Header -->
-    <div id="myCarousel" class="carousel slide" style="display: none">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <center><img src="http://placehold.it/350x150&text=Slide Two'"> </center>
-
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <center><img src="http://placehold.it/350x150&text=Slide Two'"> </center>
-
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <center><img src="http://placehold.it/350x150&text=Slide Two'"> </center>
+                    </div>
+                    <div class="item">
+                      <!-- Set the third background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=POTATO"> </center>
                <!-- <div class="carousel-caption">
                     <h2>Caption 3</h2>
-                </div> -->
-            </div>
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </div>
+                  </div> -->
+                </div>
               </div>
 
-     </div>
-   </div>
- </div>
- <div class="page" id="p4">
-   <li class="icon fa fa-dribbble"><span class="title">Dribbble</span><span class="hint"><a href="https://dribbble.com/rupok" target="_blank">Follow me on Dribbble</span></li>
- </div>  
- <!--<p class="credit"> Original Pen by <a href="http://codepen.io/hrtzt/">Alberto Hartzet</a></p>-->
+              <!-- Controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-pull-8">
+            <h2>
+              <!--Nominados-->
+            </h2>
+            <ion-content >
+
+            <div class="list" style="margin-bottom: 5%">
+
+             <!--href="#/{{item.id}}"-->
+             <a ng-repeat="item in items"  onclick="hideGallery(1)"
+             class="item item-thumbnail-left">
+
+             <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+             <h2>Juan Lopez</h2>
+             <h4>Por que lo merece...</h4>
+           </a>
+           <a ng-repeat="item in items" onclick="hideGallery(2)"
+           class="item item-thumbnail-left">
+
+           <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+           <h2>Pedro Perez</h2>
+           <h4>Por que lo merece...</h4>
+         </a>
+         <a ng-repeat="item in items"  onclick="hideGallery(1)"
+         class="item item-thumbnail-left">
+
+         <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+         <h2>Juan Lopez</h2>
+         <h4>Por que lo merece...</h4>
+       </a>
+       <a ng-repeat="item in items" onclick="hideGallery(2)"
+       class="item item-thumbnail-left">
+
+       <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+       <h2>Pedro Perez</h2>
+       <h4>Por que lo merece...</h4>
+     </a>
+     <a ng-repeat="item in items"  onclick="hideGallery(1)"
+     class="item item-thumbnail-left">
+
+     <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+     <h2>Juan Lopez</h2>
+     <h4>Por que lo merece...</h4>
+   </a>
+   <a ng-repeat="item in items" onclick="hideGallery(2)"
+   class="item item-thumbnail-left">
+
+   <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+   <h2>Pedro Perez</h2>
+   <h4>Por que lo merece...</h4>
+ </a>
+</div>
+</ion-content>
+</div>
+
+
+
+</div>
+</div>
+</div>
+<div class="page" id="p4">
+ <li class="icon fa fa-dribbble"><span class="title">Dribbble</span><span class="hint"><a href="https://dribbble.com/rupok" target="_blank">Follow me on Dribbble</span></li>
+</div>
+
+<div class="page" id="p5">
+  <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
+</div>  
+<!--<p class="credit"> Original Pen by <a href="http://codepen.io/hrtzt/">Alberto Hartzet</a></p>-->
 </section>
 
 </div>
 </div>
 </div>
 </div>
+</div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
+<!-- Script to Activate the Carousel -->
+<script>
+  $('.carousel').carousel({
         interval: 5000 //changes the speed
-    })
+      })
     </script>
 
 
-<script type="text/javascript">
-  function showGallery(id){
-    $("#myCarousel").fadeToggle();("slow");
-  }
+    <script type="text/javascript">
+      function hideGallery(id){
+        document.getElementById("myCarousel").style.transform = "translateX(350%)";
+        setTimeout(
+          function(){showGallery(id);
+          },300); 
+        /*Load Ajax*/
+      }
+      function showGallery(id){
+        /*Load Ajax*/
+        document.getElementById("myCarousel").style.transform = "translateX(0)";
+      }
 
-</script>
+    </script>
 
-</body>
-</html>
+  </body>
+  </html>
