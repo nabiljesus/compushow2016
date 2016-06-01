@@ -21,6 +21,18 @@
        -webkit-transition: all 500ms ease-out;
      }
 
+     .logoutC {
+        color: #FFF;
+        font-size: 32px;
+        margin-left: 2%;
+        margin-top: 2%;
+        position: bottom;
+     }
+     .logoutC:hover{
+        color: #FFF172;
+     }
+
+
      html, body, section, .page {
        width: 100%;
        height: 100%;
@@ -31,6 +43,14 @@
        color: #fff;
        background: #070707;
        overflow: hidden;
+     }
+     
+  a:hover {
+    text-decoration: none;
+  }
+
+     ::-webkit-scrollbar {
+       display:none;  
      }
 
      section {
@@ -348,8 +368,8 @@
     bottom: 0;
     left: 0;
     /*right: 0;*/
-    margin: auto;
-    height: 280px;
+    margin-top: 2%;
+    margin-bottom: 2%;
     width: 10%;
     padding: 0;
     text-align: center;
@@ -363,6 +383,7 @@
     text-decoration: none;
     font-family: open sans, sans-serif;
   }
+
 
   .title, .hint {
     font-family: open sans, sans-serif;
@@ -420,6 +441,10 @@
     height: 220px;
   }
 
+  .icon:hover{
+        color: #FFF172;
+  }
+
   .page#p1 .icon {
     transform: translateX(0) !important;
   }
@@ -473,7 +498,7 @@
        background-image: url({% static 'img/build.png' %});
        background-position: 80% bottom;
        background-size:  auto auto;
-       background-repeat: no-repeat;
+       background-repeat: no-repeat;  
   }
 
   .credit{
@@ -525,7 +550,7 @@
         <div class="ct" id="t20">
         <div class="ct" id="t21">
         <section >  
-         <ul style="overflow-y: auto; overflow-x: hidden">
+         <ul  style="overflow-y: scroll;  overflow-x: hidden">
            <a href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
            <a href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
            <a href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
@@ -547,19 +572,33 @@
            <a href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
            <a href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
            <a href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+           <a href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
+
          </ul>
+
          <div class="page" id="p1">
            <center style="">
-              <img src="{% static 'img/GORDITO.png' %}" alt="GORDITO" width="20%"/>
-            <span class="title">Bienvenidos al compushow 2016</span><span class="hint">
+              <img src="{% static 'img/GORDITO.png' %}" alt="COMPUSHOW" width="20%"/>
+            <div class="row">
+
+            <h2>Bienvenidos al compushow 2016</h1><span class="hint">
 
             </br>
-            <h2>¡20 categorías esperan por tu nominación!
-            ¿Quién será el ganador?</h2>
+            <h4>¡20 categorías esperan por tu nominación!<br>
+            ¿Quiénes serán los ganadores?</h4>
             </br>
+            </div>
+            <div class="row">
+
+              <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="15%"/>
             </br>
-            <a href="#logout" class="talclass">Salir</a>
+            </div>
+            <div class="row">
+            
+            </div>
+                     <a href="/logout" class="logoutC fa fa-sign-out"></a>
            </center>
+
          </div>
          <div class="page" id="p3">
           <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
