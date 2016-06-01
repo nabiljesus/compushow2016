@@ -16,3 +16,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
+admin.site.register(Categoria)
+admin.site.register(Usuario)
+admin.site.register(Nominacion)
+admin.site.register(ImgNominacion)
+admin.site.register(Voto)

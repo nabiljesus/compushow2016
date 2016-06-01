@@ -1,9 +1,742 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'sistemaCS:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% load static %}
+
+  <!DOCTYPE html>
+  <html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Compushow 2016</title>
+    <meta name="description" content="Sistema compushow 2016">
+    <meta name="author" content="Nabil J. Márquez">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel='stylesheet prefetch' href={% static 'css/font-awesome.css' %}>
+    <link href="{% static 'css/ionic.css' %}" rel="stylesheet">
+    <script src="{% static 'js/ionic.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/full-slider.css' %}" rel="stylesheet">
+    <style>
+     * {
+       transition: all 500ms ease-out;
+       -webkit-transition: all 500ms ease-out;
+     }
+
+     html, body, section, .page {
+       width: 100%;
+       height: 100%;
+       margin: 0;
+       padding: 0;
+       transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
+       -webkit-transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
+       color: #fff;
+       background: #070707;
+       overflow: hidden;
+     }
+
+     section {
+       width:400%;  
+     }
+
+     .page {
+       position: absolute;
+     }
+
+     #p1 {
+       left: 0;
+       background-image: url({% static 'img/pillar.jpg' %}), url({% static 'img/gatsby_girl.png' %});
+       background-size:  auto auto, 15% auto;
+       background-position: right bottom, 80% bottom;
+       background-repeat: repeat-y, no-repeat;
+     }
+
+     #p2 {
+       left: 100%;
+       background-image: url({% static 'img/background.jpg' %});
+       background-position: auto;
+       background-size:  auto auto;
+     }
+
+     #p3 {
+       left: 100%;
+       background-image: url({% static 'img/background.jpg' %});
+       background-position: auto;
+       background-size:  auto auto;
+     }
+
+     #p4 {
+       left: 100%;
+       background-image: url({% static 'img/background.jpg' %});
+       background-position: auto;
+       background-size:  auto auto;
+     }
+
+     #p5 {
+       left: 100%;
+       background-image: url({% static 'img/background.jpg' %});
+       background-position: auto;
+       background-size:  auto auto;
+     }
+
+     #p6 {
+       left: 100%;
+       background-image: url({% static 'img/background.jpg' %});
+       background-position: auto;
+       background-size:  auto auto;
+     }
+
+     #p7 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p8 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p9 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p10 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p11 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p12 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p13 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p14 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p15 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p16 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p17 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p18 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p19 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p20 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     #p21 {
+       left: 100%;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+     }
+
+     ul {
+      position: fixed; 
+      z-index: 1;
+    }
+
+  #t1:target .page#p1 {
+    transform: translateX(0);
+  }
+
+  #t2:target .page#p2,
+  #t3:target .page#p3,
+  #t4:target .page#p4,
+  #t5:target .page#p5,
+  #t7:target .page#p7,
+  #t8:target .page#p8,
+  #t9:target .page#p9,
+  #t10:target .page#p10,
+  #t11:target .page#p11,
+  #t12:target .page#p12,
+  #t13:target .page#p13,
+  #t14:target .page#p14,
+  #t15:target .page#p15,
+  #t16:target .page#p16,
+  #t17:target .page#p17,
+  #t18:target .page#p18,
+  #t19:target .page#p19,
+  #t20:target .page#p20,
+  #t21:target .page#p21{
+    transform: translateX(-90%);
+  }
+
+  #t2:target .page#p1,
+  #t3:target .page#p1,
+  #t4:target .page#p1,
+  #t5:target .page#p1,
+  #t7:target .page#p1,
+  #t8:target .page#p1,
+  #t9:target .page#p1,
+  #t10:target .page#p1,
+  #t11:target .page#p1,
+  #t12:target .page#p1,
+  #t13:target .page#p1,
+  #t14:target .page#p1,
+  #t15:target .page#p1,
+  #t16:target .page#p1,
+  #t17:target .page#p1,
+  #t18:target .page#p1,
+  #t19:target .page#p1,
+  #t20:target .page#p1,
+  #t21:target .page#p1{
+    background: black;
+  }
+
+
+  #t2:target .page#p1 .icon,
+  #t3:target .page#p1 .icon,
+  #t4:target .page#p1 .icon,
+  #t5:target .page#p1 .icon,
+  #t7:target .page#p1 .icon,
+  #t8:target .page#p1 .icon,
+  #t9:target .page#p1 .icon,
+  #t10:target .page#p1 .icon,
+  #t11:target .page#p1 .icon,
+  #t12:target .page#p1 .icon,
+  #t13:target .page#p1 .icon,
+  #t14:target .page#p1 .icon,
+  #t15:target .page#p1 .icon,
+  #t16:target .page#p1 .icon,
+  #t17:target .page#p1 .icon,
+  #t18:target .page#p1 .icon,
+  #t19:target .page#p1 .icon,
+  #t20:target .page#p1 .icon,
+  #t21:target .page#p1 .icon{
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+
+
+  .icon {
+    color: #fff;
+    font-size: 32px;
+    display: block;
+  }
+
+  ul .icon:hover {
+    opacity: 0.6;
+  }
+
+  #p1 .icon .title {
+    margin-bottom: 20px;
+  }
+
+  #t2:target ul .icon,
+  #t3:target ul .icon,
+  #t4:target ul .icon,
+  #t5:target ul .icon,
+  #t7:target ul .icon,
+  #t8:target ul .icon,
+  #t9:target ul .icon,
+  #t10:target ul .icon,
+  #t11:target ul .icon,
+  #t12:target ul .icon,
+  #t13:target ul .icon,
+  #t14:target ul .icon,
+  #t15:target ul .icon,
+  #t16:target ul .icon,
+  #t17:target ul .icon,
+  #t18:target ul .icon,
+  #t19:target ul .icon,
+  #t20:target ul .icon,
+  #t21:target ul .icon{
+    transform: scale(.6); 
+    transition-delay: .25s;
+  }
+
+  #t2:target #ts2,
+  #t3:target #ts3,
+  #t4:target #ts4,
+  #t5:target #ts5,
+  #t7:target #ts7,
+  #t8:target #ts8,
+  #t9:target #ts9,
+  #t10:target #ts10,
+  #t11:target #ts11,
+  #t12:target #ts12,
+  #t13:target #ts13,
+  #t14:target #ts14,
+  #t15:target #ts15,
+  #t16:target #ts16,
+  #t17:target #ts17,
+  #t18:target #ts18,
+  #t19:target #ts19,
+  #t20:target #ts20,
+  #t21:target #ts21{
+    transform: scale(1.2) !important;
+  }
+
+
+  ul {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /*right: 0;*/
+    margin: auto;
+    height: 280px;
+    width: 10%;
+    padding: 0;
+    text-align: center;
+  }
+
+  ul li {
+    margin: 30px 0;
+  }
+
+  a {
+    text-decoration: none;
+    font-family: open sans, sans-serif;
+  }
+
+  .title, .hint {
+    font-family: open sans, sans-serif;
+    display: block;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .hint {
+    font-size: 13px;
+  }
+
+  .hint a {
+    color: #EFFF06;
+    transition: all 250ms easet-out;
+  }
+
+  .hint a:hover {
+    color: #FFF;
+  }
+
+  .page .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10%;
+    left: 0;
+    width: 270px;
+    height: 170px;
+    margin: auto;
+    text-align: center;
+    font-size: 80px;
+    transform: translateX(360%);
+    line-height: 1.3;
+  }
+
+  .sContainer {
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    right: 10%;
+    left: 0;
+    margin: auto;
+    margin-left: 5%;
+    transform: translateX(180%);
+  }
+
+  #myCarousel {
+    margin-top: 25%;
+  }
+
+  .page#p1 .icon {
+    height: 220px;
+  }
+
+  .page#p1 .icon {
+    transform: translateX(0) !important;
+  }
+
+  #t2:target .page#p2 .icon,
+  #t3:target .page#p3 .icon,
+  #t4:target .page#p4 .icon,
+  #t5:target .page#p5 .icon,
+  #t7:target .page#p7 .icon,
+  #t8:target .page#p8 .icon,
+  #t9:target .page#p9 .icon,
+  #t10:target .page#p10 .icon,
+  #t11:target .page#p11 .icon,
+  #t12:target .page#p12 .icon,
+  #t13:target .page#p13 .icon,
+  #t14:target .page#p14 .icon,
+  #t15:target .page#p15 .icon,
+  #t16:target .page#p16 .icon,
+  #t17:target .page#p17 .icon,
+  #t18:target .page#p18 .icon,
+  #t19:target .page#p19 .icon,
+  #t20:target .page#p20 .icon,
+  #t21:target .page#p21 .icon{
+    transform: translateX(0) !important;
+    transition-delay: 1s;
+  }
+
+
+
+  #t2:target .page#p2 .sContainer,
+  #t3:target .page#p3 .sContainer,
+  #t4:target .page#p4 .sContainer,
+  #t5:target .page#p5 .sContainer,
+  #t7:target .page#p7 .sContainer,
+  #t8:target .page#p8 .sContainer,
+  #t9:target .page#p9 .sContainer,
+  #t10:target .page#p10 .sContainer,
+  #t11:target .page#p11 .sContainer,
+  #t12:target .page#p12 .sContainer,
+  #t13:target .page#p13 .sContainer,
+  #t14:target .page#p14 .sContainer,
+  #t15:target .page#p15 .sContainer,
+  #t16:target .page#p16 .sContainer,
+  #t17:target .page#p17 .sContainer,
+  #t18:target .page#p18 .sContainer,
+  #t19:target .page#p19 .sContainer,
+  #t20:target .page#p20 .sContainer,
+  #t21:target .page#p21 .sContainer{
+    transform: translateX(0) !important;
+    transition-delay: 1s;
+       background-image: url({% static 'img/build.png' %});
+       background-position: 80% bottom;
+       background-size:  auto auto;
+       background-repeat: no-repeat;
+  }
+
+  .credit{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+   font-size: 10px;
+ }
+
+ .credit a {
+   color: #fff
+ }
+
+ .toggled {
+
+  transform: translateX(0) !important;
+}
+
+</style>
+
+
+<script src={% static 'js/prefixfree.min.js' %}></script>
+
+
+</head>
+
+<body>
+
+  <div class="ct" id="t1">
+   <div class="ct" id="t2">
+     <div class="ct" id="t3">
+       <div class="ct" id="t4">
+        <div class="ct" id="t5">
+  <div class="ct" id="t6">
+   <div class="ct" id="t7">
+     <div class="ct" id="t8">
+       <div class="ct" id="t9">
+        <div class="ct" id="t10">
+  <div class="ct" id="t11">
+   <div class="ct" id="t12">
+     <div class="ct" id="t13">
+       <div class="ct" id="t14">
+        <div class="ct" id="t15">
+  <div class="ct" id="t16">
+   <div class="ct" id="t17">
+     <div class="ct" id="t18">
+       <div class="ct" id="t19">
+        <div class="ct" id="t20">
+        <div class="ct" id="t21">
+        <section >  
+         <ul style="overflow-y: auto; overflow-x: hidden">
+           <a href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
+           <a href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
+           <a href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
+           <a href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
+           <a href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
+           <a href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
+           <a href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
+           <a href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
+           <a href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
+           <a href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
+           <a href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
+           <a href="#t12"><li class="icon fa-hand-rock-o" id="ts12"></li></a>
+           <a href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
+           <a href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
+           <a href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
+           <a href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
+           <a href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
+           <a href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
+           <a href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
+           <a href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
+           <a href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+         </ul>
+         <div class="page" id="p1">
+           <center style="">
+              <img src="{% static 'img/GORDITO.png' %}" alt="GORDITO" width="20%"/>
+            <span class="title">Bienvenidos al compushow 2016</span><span class="hint">
+
+            </br>
+            <h2>¡20 categorías esperan por tu nominación!
+            ¿Quién será el ganador?</h2>
+            </br>
+            </br>
+            <a href="#logout" class="talclass">Salir</a>
+           </center>
+         </div>
+         <div class="page" id="p3">
+          <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
+        </div>  
+        <div class="page" id="p2" style="overflow-y: auto;">
+          <div class="row">
+            <div class="col-md-12">
+              <center>
+              <img src="{% static 'img/GORDITO.png' %}" alt="GORDITO" width="20%"/>
+                      <p>
+                      El profe más chévere.
+                    </p>
+              </center>
+            </div>
+          </div>
+          <div class="container-fluid sContainer">
+                      <h2>
+              <!--Nominats2-->
+            </h2> 
+            <div class="row">
+              <div class="col-md-8 col-sm-push-4">
+                <!-- Full Page Image Background Carousel Header -->
+                <div id="myCarousel" class="carousel slide" style="transform: translateX(700%);">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Wrapper for Slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <!-- Set the first background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=Slide One"> </center>
+
+                    </div>
+                    <div class="item">
+                      <!-- Set the second background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=Slide Two"> </center>
+
+                    </div>
+                    <div class="item">
+                      <!-- Set the third background image using inline CSS below. -->
+                      <center><img src="http://placehold.it/350x150&text=POTATO"> </center>
+               <!-- <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                  </div> -->
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-pull-8">
+            <h2>
+              <!--Nominats2-->
+            </h2>
+            <ion-content >
+
+            <div class="list" style="margin-bottom: 5%">
+
+             <!--href="#/{{item.id}}"-->
+             <a ng-repeat="item in items"  onclick="hideGallery(1)"
+             class="item item-thumbnail-left">
+
+             <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+             <h2>Juan Lopez</h2>
+             <h4>Por que lo merece...</h4>
+           </a>
+           <a ng-repeat="item in items" onclick="hideGallery(2)"
+           class="item item-thumbnail-left">
+
+           <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+           <h2>Pedro Perez</h2>
+           <h4>Por que lo merece...</h4>
+         </a>
+         <a ng-repeat="item in items"  onclick="hideGallery(1)"
+         class="item item-thumbnail-left">
+
+         <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+         <h2>Juan Lopez</h2>
+         <h4>Por que lo merece...</h4>
+       </a>
+       <a ng-repeat="item in items" onclick="hideGallery(2)"
+       class="item item-thumbnail-left">
+
+       <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+       <h2>Pedro Perez</h2>
+       <h4>Por que lo merece...</h4>
+     </a>
+     <a ng-repeat="item in items"  onclick="hideGallery(1)"
+     class="item item-thumbnail-left">
+
+     <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+     <h2>Juan Lopez</h2>
+     <h4>Por que lo merece...</h4>
+   </a>
+   <a ng-repeat="item in items" onclick="hideGallery(2)"
+   class="item item-thumbnail-left">
+
+   <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
+   <h2>Pedro Perez</h2>
+   <h4>Por que lo merece...</h4>
+ </a>
+</div>
+</ion-content>
+</div>
+
+
+
+</div>
+</div>
+</div>
+<div class="page" id="p4">
+ <li class="icon fa fa-dribbble"><span class="title">Dribbble</span><span class="hint"><a href="https://dribbble.com/rupok" target="_blank">Follow me on Dribbble</span></li>
+</div>
+
+<div class="page" id="p5">
+  <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
+</div>  
+<!--<p class="credit"> Original Pen by <a href="http://codepen.io/hrtzt/">Alberto Hartzet</a></p>-->
+</section>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- jQuery -->
+<script src={% static 'js/jquery.js' %}></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src={% static 'js/bootstrap.min.js' %}></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+  $('.carousel').carousel({
+        interval: 5000 //changes the speed
+      })
+    </script>
+
+
+    <script type="text/javascript">
+      function hideGallery(id){
+        document.getElementById("myCarousel").style.transform = "translateX(350%)";
+        setTimeout(
+          function(){showGallery(id);
+          },300); 
+        /*Load Ajax*/
+      }
+      function showGallery(id){
+        /*Load Ajax*/
+        document.getElementById("myCarousel").style.transform = "translateX(0)";
+      }
+
+    </script>
+
+  </body>
+  </html>

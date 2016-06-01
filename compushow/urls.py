@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from sistemaCS.views import *
 
 urlpatterns = patterns('',
     url(r'^sistemaCS/', include('sistemaCS.urls', namespace="sistemaCS")),
