@@ -41,6 +41,7 @@ class Nominacion(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     unom=models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="nominado")
     uid=models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="nominante")
+    desc=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
         return repr(self.uid)+"=>"+repr(self.unom)+"( "+repr(self.idcat)+" )"
 
