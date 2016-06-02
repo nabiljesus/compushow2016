@@ -15,6 +15,9 @@
     <script src="{% static 'js/index.js' %}"></script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/full-slider.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}"> <!-- Gem style -->
+    <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
     <style>
      * {
        transition: all 500ms ease-out;
@@ -251,7 +254,9 @@
   #t18:target .page#p18,
   #t19:target .page#p19,
   #t20:target .page#p20,
-  #t21:target .page#p21{
+  #t21:target .page#p21,
+  #t22:target .page#p21,
+  #t23:target .page#p21{
     transform: translateX(-90%);
   }
 
@@ -273,7 +278,9 @@
   #t18:target .page#p1,
   #t19:target .page#p1,
   #t20:target .page#p1,
-  #t21:target .page#p1{
+  #t21:target .page#p1,
+  #t22:target .page#p1,
+  #t23:target .page#p1{
     background: black;
   }
 
@@ -296,7 +303,9 @@
   #t18:target .page#p1 .icon,
   #t19:target .page#p1 .icon,
   #t20:target .page#p1 .icon,
-  #t21:target .page#p1 .icon{
+  #t21:target .page#p1 .icon,
+  #t22:target .page#p1 .icon,
+  #t23:target .page#p1 .icon{
     -webkit-filter: blur(3px);
     filter: blur(3px);
   }
@@ -334,7 +343,9 @@
   #t18:target ul .icon,
   #t19:target ul .icon,
   #t20:target ul .icon,
-  #t21:target ul .icon{
+  #t21:target ul .icon,
+  #t22:target ul .icon,
+  #t23:target ul .icon{
     transform: scale(.6); 
     transition-delay: .25s;
   }
@@ -357,7 +368,9 @@
   #t18:target #ts18,
   #t19:target #ts19,
   #t20:target #ts20,
-  #t21:target #ts21{
+  #t21:target #ts21,
+  #t22:target #ts22,
+  #t23:target #ts23{
     transform: scale(1.2) !important;
   }
 
@@ -467,7 +480,9 @@
   #t18:target .page#p18 .icon,
   #t19:target .page#p19 .icon,
   #t20:target .page#p20 .icon,
-  #t21:target .page#p21 .icon{
+  #t21:target .page#p21 .icon,
+  #t22:target .page#p22 .icon,
+  #t23:target .page#p23 .icon{
     transform: translateX(0) !important;
     transition-delay: 1s;
   }
@@ -492,7 +507,9 @@
   #t18:target .page#p18 .sContainer,
   #t19:target .page#p19 .sContainer,
   #t20:target .page#p20 .sContainer,
-  #t21:target .page#p21 .sContainer{
+  #t21:target .page#p21 .sContainer,
+  #t22:target .page#p22 .sContainer,
+  #t23:target .page#p23 .sContainer{
     transform: translateX(0) !important;
     transition-delay: 1s;
        background-image: url({% static 'img/build.png' %});
@@ -527,6 +544,37 @@
 </head>
 
 <body>
+  <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+
+
+      <div id="cd-login"> <!-- log in form -->
+        <form class="cd-form" id="loginForm" action="login_view" method="post">
+          <p class="fieldset">
+            <label class="image-replace cd-username" for="signin-username">LDC-ID</label>
+            <input class="full-width has-padding has-border" name="username" id="signin-username" type="username" placeholder="Nombre de Usuario LDC">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace cd-password" for="signin-password">Contraseña</label>
+            <input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Contraseña">
+            <a href="#0" class="hide-password">Mostrar</a>
+            <span class="cd-error-message">No puede estar vacío</span>
+          </p>
+
+          {% csrf_token %}
+
+            <input class="full-width" type="submit" value="Login" onclick="submitLogin()">
+        </form>
+        
+        <!-- <a href="#0" class="cd-close-form">Close</a> -->
+      </div> <!-- cd-login -->
+
+      <a href="#0" class="cd-close-form">Close</a>
+    </div> <!-- cd-user-modal-container -->
+  </div> <!-- cd-user-modal -->
+
 
   <div class="ct" id="t1">
    <div class="ct" id="t2">
@@ -549,8 +597,11 @@
        <div class="ct" id="t19">
         <div class="ct" id="t20">
         <div class="ct" id="t21">
+        <div class="ct" id="t22">
+        <div class="ct" id="t23">
         <section >  
          <ul  style="overflow-y: scroll;  overflow-x: hidden">
+           {% if user.is_authenticated %}
            <a href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
            <a href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
            <a href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
@@ -562,7 +613,7 @@
            <a href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
            <a href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
            <a href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
-           <a href="#t12"><li class="icon fa-hand-rock-o" id="ts12"></li></a>
+           <a href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
            <a href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
            <a href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
            <a href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
@@ -572,7 +623,10 @@
            <a href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
            <a href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
            <a href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+           <a href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
+           <a href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
            <a href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
+           {% endif %}
 
          </ul>
 
@@ -596,7 +650,23 @@
             <div class="row">
             
             </div>
-                     <a href="/logout" class="logoutC fa fa-sign-out"></a>
+
+           {% if user.is_authenticated %}
+            {% csrf_token %}
+                  <a href="/sistemaCS/logout" class="logoutC">{{request.session.name}} <span class="fa fa-sign-out"></span></a>
+            {%else%}
+                  <center>
+                      <div class="main-nav">
+                        <ul>
+                          <li><a class="cd-signin" href="#0">Iniciar Sesion</a></li>
+                        </ul>
+                      </div>
+                      {% if wrongData %}
+                        <p style="color: red"> Datos erroneos </p>
+                      {% endif %}
+                  </center>
+            {%endif%}
+
            </center>
 
          </div>
@@ -747,6 +817,8 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 
 <!-- jQuery -->
 <script src={% static 'js/jquery.js' %}></script>
@@ -776,6 +848,12 @@
       }
 
     </script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+<script language="javascript" type="text/javascript">
+    function submitLogin() {
+       $("#loginForm").submit();
+    }
+</script>
   </body>
   </html>
