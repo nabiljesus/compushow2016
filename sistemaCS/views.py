@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from models import *
 from django.contrib.auth.models import User
-
+from django.views.decorators.csrf import ensure_csrf_cookie
 '''def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     output = ', '.join([p.question_text for p in latest_question_list])
@@ -48,6 +48,7 @@ def logout_view(request):
 
 
 def login_view(request):
+  context={}
   if request.user.is_authenticated():
     return render(request, 'sistemaCS/index.html', context)
 
@@ -122,4 +123,10 @@ def check_ldap(username,password,isLDC):
         print('fallo')
         return False
 
-
+@ensure_csrf_cookie
+def myCategory(request):
+    print('AAAAAAAAAAAAAAAA')
+    print(request.POST)
+    context = {'pageid': str(request.POST.get('id'))}
+    print(context)
+    return render(request, 'sistemaCS/myCategory.html', context)
