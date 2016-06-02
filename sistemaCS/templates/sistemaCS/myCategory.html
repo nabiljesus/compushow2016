@@ -27,6 +27,10 @@
                 <ul style="margin: 0">
                   <li style="margin: 0" id="NomButton"><a class="cd-signin votarbut">¡Nomina!</a></li>
                 </ul>
+                {%if hasVoted %}
+                  <p style="color: red"> Ya existe la nominación. </p>
+                  <br>
+                {%endif%}
               </div>
               </center> 
             <div class="list" style="margin-bottom: 5%">
@@ -56,8 +60,11 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+window.onload = function(){
+  alert('www');
+  
   $("#NomButton").click(function(){
+  alert('www');
   var formModal = $('.cd-user-modal'),
     formLogin = formModal.find('#cd-login'),
     formSignup = formModal.find('#cd-signup'),
@@ -77,6 +84,6 @@
     tabLogin.addClass('selected');
     tabSignup.removeClass('selected');
   });
-        });
+});
 </script>
 

@@ -30,6 +30,10 @@ import json
     return HttpResponse(template.render(context))'''
 
 def index(request):
+    if not request.session.get('hasVoted'):
+      request.session['hasVoted']=0
+    else:
+      request.session['hasVoted']=request.session['hasVoted']-1
     context = {}
     return render(request, 'sistemaCS/index.html', context)
 
@@ -55,6 +59,8 @@ def logout_view(request):
 
 
 def login_view(request):
+  request.session['category']='0'
+  request.session['fromNominate']=False
   context={}
   if request.user.is_authenticated():
     return render(request, 'sistemaCS/index.html', context)
@@ -144,6 +150,7 @@ def myCategory(request):
     catId= str(int(str(request.POST.get('id')))-1)
     context = CATDATA[catId]
     context['pageid'] = catId
+    request.session['category']=catId
     if str(request.POST.get('addVote'))=='true':
       addNom(request.POST.get('nuid'),request.session['uid'],catId)
 
@@ -156,6 +163,12 @@ def myCategory(request):
       mListaNom=get_nom_list(int(catId),request.session['uid'])
       ListaNom = sorted(mListaNom, key=itemgetter('nName')) 
       context['listaNom'] = ListaNom
+      if request.session.get('hasVoted'):
+        if request.session['hasVoted'] > 0:
+          context['hasVoted'] = True
+        request.session['hasVoted'] = 0
+      else:
+        context['hasVoted'] = False
       print(context)
       return render(request, 'sistemaCS/myCategory.html', context)
 
@@ -220,7 +233,7 @@ def get_nom_list(idCat,uid):
   return myList
 
 def hasVoted(myuid,myunom,midCat):
-  oListaNom = Nominacion.objects.filter(idcat=idCat).filter(unom=myunom).filter(uid=myuid)
+  oListaNom = Nominacion.objects.filter(idcat=midCat).filter(unom=myunom).filter(uid=myuid)
   hasVoted = False
   if oListaNom.first():  #Si no es vacia
     hasVoted = True
@@ -248,11 +261,26 @@ def get_users(request):
     results = []
     for user in users:
         user_json = {}
-        user_json['uid'] = user.uid
-        user_json['name'] = user.name
+        user_json['id'] = user.uid
+        user_json['label'] = user.name
+        user_json['value'] = user.uid
         results.append(user_json)
     data = json.dumps(results)
     print(data)
 
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+def nominate_view(request):
+    print('=========NOMINATE==========')
+    mycat=request.session['category']
+    if not hasVoted(request.POST.get('username'),request.session['uid'],mycat):
+      addNom(request.POST.get('username'),request.session['uid'],mycat)
+    else:
+      request.session['hasVoted']=2
+    mycat=str(int(mycat)+1)
+    request.session['category']=mycat
+    print(request.POST)
+    print(request.GET)
+    context = {}
+    return HttpResponseRedirect('/sistemaCS/#t'+mycat)

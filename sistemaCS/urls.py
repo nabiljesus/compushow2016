@@ -6,6 +6,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'logout', views.logout_view, name='logout'),
     url(r'login_view', views.login_view, name='login'),
+    url(r'nominate_view', views.nominate_view, name='nominate_view'),
     url(r'myCategory', views.myCategory, name='category'),
     url(r'myCarousel', views.myCarousel, name='carousel'),
     # ex: /polls/5/
