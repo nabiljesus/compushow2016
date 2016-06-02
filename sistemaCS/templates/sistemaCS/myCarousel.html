@@ -1,0 +1,76 @@
+              <center>
+                      <div class="main-nav">
+                        <ul style="margin: 0">
+                      {% if Voted %}
+                          <li style="margin: 0"><a style="background: #1C1C1C" class="cd-signin" >Ya has votado por este nomidado</a></li>
+                      {% else %}
+                          <li class="votacion" style="margin: 0"><a class="cd-signin votarbut" >Votar por:</a></li>
+                      {% endif %}
+                        </ul>
+<h2> {{carNName}}</h2>
+<br>
+                      </div>
+                      </center> 
+
+                <div id="myCarousel" class="carousel slide">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Wrapper for Slides -->
+                  <div class="carousel-inner">
+                  {%for myimg in imgList%}
+                  {%if forloop.counter == 1%}
+                    <div class="item active">
+                      <!-- Set the first background image using inline CSS below. -->
+                      <center><img src="/static/{{myimg}}"> </center>
+                    </div>
+                  {%else%}
+                    <div class="item">
+                      <!-- Set the first background image using inline CSS below. -->
+                      <center><img src="/static/{{myimg}}"> </center>
+                    </div>
+                  {%endif%}
+                {%endfor%}
+              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+              </a>
+              <!---------------------->
+            </div>
+
+<script type="text/javascript">
+  $(".votacion").click(function(event) {
+    var num    = '{{pId}}';
+    console.log(num);
+    var focus = "#p"+num
+    hideGallery2();
+    $.ajax({
+      url: 'myCategory/',
+      data: { id: num,
+              addVote : 'true',
+              nuid     : '{{nuid}}',
+              csrfmiddlewaretoken:'{{ csrf_token }}'
+      }, 
+      type: "POST",
+      success: function(data) {
+      $(focus).html(data);
+      }
+    });
+  });
+</script>
+
+    <script type="text/javascript">
+      function hideGallery2(){
+        document.getElementById("carousel-div").style.transform = "translateX(350%)";
+        /*Load Ajax*/
+      }
+    </script>
