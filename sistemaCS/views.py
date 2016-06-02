@@ -8,6 +8,13 @@ from django.http import HttpResponseRedirect, HttpResponse
 from models import *
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import ensure_csrf_cookie
+
+
+from operator import itemgetter
+import ldap
+import random
+import json
+
 '''def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     output = ', '.join([p.question_text for p in latest_question_list])
@@ -52,11 +59,18 @@ def login_view(request):
   if request.user.is_authenticated():
     return render(request, 'sistemaCS/index.html', context)
 
+
   print(request.POST)
   username = request.POST.get('username', '')
   password = request.POST.get('password', '')
   itPassed = False  
   context  = {'wrongData' : False}
+
+  context['noComputista']=False
+  myUser = Usuario.objects.filter(uid=username)
+  if not myUser:
+    context['noComputista']=True
+    return render(request, 'sistemaCS/index.html', context)
 
   if check_ldap(username,password,True):
     itPassed = True
@@ -85,11 +99,11 @@ def login_view(request):
 
       # Show an error page
   request.session['name']=myUser.name
+  request.session['uid']=myUser.uid
   return render(request, 'sistemaCS/index.html', context)
 
 
 def check_ldap(username,password,isLDC):
-    import ldap
      
     if isLDC:
         print("Ldap LDC")
@@ -125,8 +139,120 @@ def check_ldap(username,password,isLDC):
 
 @ensure_csrf_cookie
 def myCategory(request):
-    print('AAAAAAAAAAAAAAAA')
+    print('=====CATEGORY========')
     print(request.POST)
-    context = {'pageid': str(request.POST.get('id'))}
+    catId= str(int(str(request.POST.get('id')))-1)
+    context = CATDATA[catId]
+    context['pageid'] = catId
+    if str(request.POST.get('addVote'))=='true':
+      addNom(request.POST.get('nuid'),request.session['uid'],catId)
+
+    if 'uid' not in request.session:
+      print('yup, fucked up.')
+      return HttpResponseRedirect('/logout')
+    else:
+      print('not fucked')
+      print(request.session['uid'])
+      mListaNom=get_nom_list(int(catId),request.session['uid'])
+      ListaNom = sorted(mListaNom, key=itemgetter('nName')) 
+      context['listaNom'] = ListaNom
+      print(context)
+      return render(request, 'sistemaCS/myCategory.html', context)
+
+def addNom(nuid,uid,catId):
+  print('Addingo voto ------')
+  print(nuid)
+  print(uid)
+  print(catId)
+  Ccat=Categoria.objects.filter(id=catId).first()
+  Uunom=Usuario.objects.filter(uid=nuid).first()
+  Uuid=Usuario.objects.filter(uid=uid).first()
+  noms=Nominacion(idcat=Ccat, unom=Uunom, uid=Uuid, desc="")
+  noms.save()
+  print('SE SUPONE....')
+
+def get_nom_list(idCat,uid):
+  oListaNom = Nominacion.objects.filter(idcat=idCat)
+  ListaNom = {}
+  for myNomi in oListaNom:
+    elNomi = myNomi.unom.name
+    if not elNomi in ListaNom.keys():
+      dNomi = {}
+      dNomi['nId'] = [str(myNomi.id)]
+      dNomi['nName'] = (str(elNomi))
+      dNomi['nUid'] = repr(str(myNomi.unom))
+      dNomi['nRName'] = repr(str(elNomi))
+      dNomi['nDesc'] = [str(myNomi.desc)]
+      dNomi['nHas'] = myNomi.uid.uid == uid
+      oListaNom = Nominacion.objects.filter(idcat=idCat)
+      ListaNom[elNomi]=dNomi
+    else:
+      ListaNom[elNomi]['nId'] += [str(myNomi.id)]
+      ListaNom[elNomi]['nDesc'] += [str(myNomi.desc)]
+      ListaNom[elNomi]['nHas'] = ListaNom[elNomi]['nHas'] or (myNomi.uid.uid == uid)
+
+
+  myList = []
+  for key in ListaNom.keys():
+    tempDic = ListaNom[key]
+    aux=filter(lambda w: w!="", tempDic['nDesc'])
+    if aux:
+      tempDic['nDesc']=random.choice(aux)
+    else:
+      tempDic['nDesc']=""
+    tempDic['nImaList']=[]
+    for cId in tempDic['nId']:
+      omisImagenes=ImgNominacion.objects.filter(idnom=cId)
+      for img in omisImagenes:
+        aux="catImgs/"+myNomi.idcat.nombre+"/"+str(img.img)
+        tempDic['nImaList']+=[str(aux)]
+    tempDic['nId']=tempDic['nId'][0]
+    if tempDic['nImaList']:
+      tempDic['nFront']=random.choice(tempDic['nImaList'])
+    else:
+      tempDic['nImaList']=['img/noimg.png']
+      tempDic['nFront']='img/none.gif'
+    if tempDic['nHas']:
+      tempDic['nHas']='true'
+    else:
+      tempDic['nHas']='false'
+    myList+=[tempDic]
+  return myList
+
+def hasVoted(myuid,myunom,midCat):
+  oListaNom = Nominacion.objects.filter(idcat=idCat).filter(unom=myunom).filter(uid=myuid)
+  hasVoted = False
+  if oListaNom.first():  #Si no es vacia
+    hasVoted = True
+  return hasVoted
+
+@ensure_csrf_cookie
+def myCarousel(request):
+    print('=====CAROUSEL========')
+    print(request.POST)
+    carId= str(request.POST.get('carId'))
+    context = {'carId' : carId,
+               'carNName' : str(request.POST.get('carNName')),
+               'imgList'  : request.POST.getlist('imgList[]'),
+               'Voted' : str(request.POST.get('Voted'))=='true',
+               'pId'   : str(int(request.POST.get('pId'))+1),
+               'nuid'   : str(request.POST.get('nuid'))}
     print(context)
-    return render(request, 'sistemaCS/myCategory.html', context)
+    return render(request, 'sistemaCS/myCarousel.html', context)
+
+
+def get_users(request):
+    print('did it work?')
+    q = request.GET.get('term', '')
+    users = Usuario.objects.filter(name__icontains = q )[:20]
+    results = []
+    for user in users:
+        user_json = {}
+        user_json['uid'] = user.uid
+        user_json['name'] = user.name
+        results.append(user_json)
+    data = json.dumps(results)
+    print(data)
+
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)

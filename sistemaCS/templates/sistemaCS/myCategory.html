@@ -1,118 +1,82 @@
-        <div class="page" id="p{{pageid}}" style="overflow-y: auto;">
-          <div class="row">
+          <div class="row" >
             <div class="col-md-12">
               <center>
-              <img src="/static/img/cat/{{pageid}}.png" alt="GORDITO" width="20%"/>
-                      <p>
-                      {{desc}}
+              <img src="/static/img/cat/{{catName}}.png" alt="{{catName}}" width="20%"/>
+                      <br>
+                      <p style="font-style: italic;">
+                      {{catDesc}}
                     </p>
               </center>
             </div>
           </div>
-          <div class="container-fluid sContainer">
+          <div class="container-fluid sContainer" style="margin-top: 2%">
                       <h2>
               <!--Nominats2-->
             </h2> 
             <div class="row">
               <div class="col-md-8 col-sm-push-4">
                 <!-- Full Page Image Background Carousel Header -->
-                <div id="myCarousel" class="carousel slide" style="transform: translateX(700%);">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                  </ol>
-
-                  <!-- Wrapper for Slides -->
-                  <div class="carousel-inner">
-                    <div class="item active">
-                      <!-- Set the first background image using inline CSS below. -->
-                      <center><img src="http://placehold.it/350x150&text=Slide One"> </center>
-
-                    </div>
-                    <div class="item">
-                      <!-- Set the second background image using inline CSS below. -->
-                      <center><img src="http://placehold.it/350x150&text=Slide Two"> </center>
-
-                    </div>
-                    <div class="item">
-                      <!-- Set the third background image using inline CSS below. -->
-                      <center><img src="http://placehold.it/350x150&text=POTATO"> </center>
-               <!-- <div class="carousel-caption">
-                    <h2>Caption 3</h2>
-                  </div> -->
+                <div id="carousel-div" style="transform: translateX(700%);">
+                  <!-- AJAX update myCarousel -->
                 </div>
-              </div>
-
-              <!-- Controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="icon-prev"></span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="icon-next"></span>
-              </a>
-
-            </div>
           </div>
 
           <div class="col-md-4 col-sm-pull-8">
-            <h2>
-              <!--Nominats2-->
-            </h2>
-            <ion-content >
-
+              <center>
+              <div class="main-nav">
+                <ul style="margin: 0">
+                  <li style="margin: 0" id="NomButton"><a class="cd-signin votarbut">¡Nomina!</a></li>
+                </ul>
+              </div>
+              </center> 
             <div class="list" style="margin-bottom: 5%">
+            {% for nom in listaNom %}
+
+
+
 
              <!--href="#/{{item.id}}"-->
-             <a ng-repeat="item in items"  onclick="hideGallery(1)"
+             <a onclick="hideGallery({{ nom.nId }},{{ nom.nImaList }},{{ nom.nRName }},{{ nom.nHas }},{{pageid}},{{nom.nUid}})"
              class="item item-thumbnail-left">
 
-             <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-             <h2>Juan Lopez</h2>
-             <h4>Por que lo merece...</h4>
+             <img src="/static/{{nom.nFront}}">
+             <h2>{{nom.nName}}</h2>
+             <h4>{{nom.nDesc}}</h4>
+             {%empty%}
+             <h2>No hay nominados todavía.</h2>
+             <h4>¿Por qué no nominas a alguien?</h4>
+             {%endfor%}
            </a>
-           <a ng-repeat="item in items" onclick="hideGallery(2)"
-           class="item item-thumbnail-left">
-
-           <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-           <h2>Pedro Perez</h2>
-           <h4>Por que lo merece...</h4>
-         </a>
-         <a ng-repeat="item in items"  onclick="hideGallery(1)"
-         class="item item-thumbnail-left">
-
-         <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-         <h2>Juan Lopez</h2>
-         <h4>Por que lo merece...</h4>
-       </a>
-       <a ng-repeat="item in items" onclick="hideGallery(2)"
-       class="item item-thumbnail-left">
-
-       <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-       <h2>Pedro Perez</h2>
-       <h4>Por que lo merece...</h4>
-     </a>
-     <a ng-repeat="item in items"  onclick="hideGallery(1)"
-     class="item item-thumbnail-left">
-
-     <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-     <h2>Juan Lopez</h2>
-     <h4>Por que lo merece...</h4>
-   </a>
-   <a ng-repeat="item in items" onclick="hideGallery(2)"
-   class="item item-thumbnail-left">
-
-   <img src="http://www.jqueryscript.net/images/jQueryPhotoAlbum.jpg">
-   <h2>Pedro Perez</h2>
-   <h4>Por que lo merece...</h4>
- </a>
-</div>
-</ion-content>
-</div>
+          </div>
+          </div>
 
 
 
 </div>
 </div>
-</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+  $("#NomButton").click(function(){
+  var formModal = $('.cd-user-modal'),
+    formLogin = formModal.find('#cd-login'),
+    formSignup = formModal.find('#cd-signup'),
+    formForgotPassword = formModal.find('#cd-reset-password'),
+    formModalTab = $('.cd-switcher'),
+    tabLogin = formModalTab.children('li').eq(0).children('a'),
+    tabSignup = formModalTab.children('li').eq(1).children('a'),
+    forgotPasswordLink = formLogin.find('.cd-form-bottom-message a'),
+    backToLoginLink = formForgotPassword.find('.cd-form-bottom-message a'),
+    mainNav = $('.main-nav');
+
+    mainNav.children('ul').removeClass('is-visible');
+    formModal.addClass('is-visible');
+    formLogin.addClass('is-selected');
+    formSignup.removeClass('is-selected');
+    formForgotPassword.removeClass('is-selected');
+    tabLogin.addClass('selected');
+    tabSignup.removeClass('selected');
+  });
+        });
+</script>
+

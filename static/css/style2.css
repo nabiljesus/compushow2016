@@ -445,3 +445,8 @@ xsigin/signup popup
 #cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected {
   display: block;
 }
+  a.votarbut:hover{
+    background: #FFF172;
+    color: #000;
+    font-weight: bold;
+}

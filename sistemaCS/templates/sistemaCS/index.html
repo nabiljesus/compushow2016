@@ -16,532 +16,12 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/full-slider.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+    <link rel="stylesheet" href="{% static 'css/tooltip.css' %}"> <!-- Gem style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Gem style -->
     <link rel="stylesheet" href="{% static 'css/style2.css' %}"> <!-- Gem style -->
     <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
-    <style>
-     * {
-       transition: all 500ms ease-out;
-       -webkit-transition: all 500ms ease-out;
-     }
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
 
-     .logoutC {
-        color: #FFF;
-        font-size: 32px;
-        margin-left: 2%;
-        margin-top: 2%;
-        position: bottom;
-     }
-     .logoutC:hover{
-        color: #FFF172;
-     }
-
-
-     html, body, section, .page {
-       width: 100%;
-       height: 100%;
-       margin: 0;
-       padding: 0;
-       transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
-       -webkit-transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
-       color: #fff;
-       background: #070707;
-       overflow: hidden;
-     }
-     
-  a:hover {
-    text-decoration: none;
-  }
-
-     ::-webkit-scrollbar {
-       display:none;  
-     }
-
-     section {
-       width:400%;  
-     }
-
-     .page {
-       position: absolute;
-     }
-
-     #p1 {
-       left: 0;
-       background-image: url({% static 'img/pillar.jpg' %}), url({% static 'img/gatsby_girl.png' %});
-       background-size:  auto auto, 15% auto;
-       background-position: right bottom, 80% bottom;
-       background-repeat: repeat-y, no-repeat;
-     }
-
-     #p2 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p3 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p4 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p5 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p6 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p7 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p8 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p9 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p10 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p11 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p12 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p13 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p14 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p15 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p16 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p17 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p18 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p19 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p20 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p21 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p22 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     #p23 {
-       left: 100%;
-       background-image: url({% static 'img/background.jpg' %});
-       background-position: auto;
-       background-size:  auto auto;
-     }
-
-     ul {
-      position: fixed; 
-      z-index: 1;
-    }
-
-  #t1:target .page#p1 {
-    transform: translateX(0);
-  }
-
-  #t2:target .page#p2,
-  #t3:target .page#p3,
-  #t4:target .page#p4,
-  #t5:target .page#p5,
-  #t6:target .page#p6,
-  #t7:target .page#p7,
-  #t8:target .page#p8,
-  #t9:target .page#p9,
-  #t10:target .page#p10,
-  #t11:target .page#p11,
-  #t12:target .page#p12,
-  #t13:target .page#p13,
-  #t14:target .page#p14,
-  #t15:target .page#p15,
-  #t16:target .page#p16,
-  #t17:target .page#p17,
-  #t18:target .page#p18,
-  #t19:target .page#p19,
-  #t20:target .page#p20,
-  #t21:target .page#p21,
-  #t22:target .page#p22,
-  #t23:target .page#p23{
-    transform: translateX(-90%);
-  }
-
-  #t2:target .page#p1,
-  #t3:target .page#p1,
-  #t4:target .page#p1,
-  #t5:target .page#p1,
-  #t6:target .page#p1,
-  #t7:target .page#p1,
-  #t8:target .page#p1,
-  #t9:target .page#p1,
-  #t10:target .page#p1,
-  #t11:target .page#p1,
-  #t12:target .page#p1,
-  #t13:target .page#p1,
-  #t14:target .page#p1,
-  #t15:target .page#p1,
-  #t16:target .page#p1,
-  #t17:target .page#p1,
-  #t18:target .page#p1,
-  #t19:target .page#p1,
-  #t20:target .page#p1,
-  #t21:target .page#p1,
-  #t22:target .page#p1,
-  #t23:target .page#p1{
-    background: black;
-  }
-
-
-  #t2:target .page#p1 .icon,
-  #t3:target .page#p1 .icon,
-  #t4:target .page#p1 .icon,
-  #t5:target .page#p1 .icon,
-  #t6:target .page#p1 .icon,
-  #t7:target .page#p1 .icon,
-  #t8:target .page#p1 .icon,
-  #t9:target .page#p1 .icon,
-  #t10:target .page#p1 .icon,
-  #t11:target .page#p1 .icon,
-  #t12:target .page#p1 .icon,
-  #t13:target .page#p1 .icon,
-  #t14:target .page#p1 .icon,
-  #t15:target .page#p1 .icon,
-  #t16:target .page#p1 .icon,
-  #t17:target .page#p1 .icon,
-  #t18:target .page#p1 .icon,
-  #t19:target .page#p1 .icon,
-  #t20:target .page#p1 .icon,
-  #t21:target .page#p1 .icon,
-  #t22:target .page#p1 .icon,
-  #t23:target .page#p1 .icon{
-    -webkit-filter: blur(3px);
-    filter: blur(3px);
-  }
-
-
-  .icon {
-    color: #fff;
-    font-size: 32px;
-    display: block;
-  }
-
-  ul .icon:hover {
-    opacity: 0.6;
-  }
-
-  #p1 .icon .title {
-    margin-bottom: 20px;
-  }
-
-  #t2:target ul .icon,
-  #t3:target ul .icon,
-  #t4:target ul .icon,
-  #t5:target ul .icon,
-  #t6:target ul .icon,
-  #t7:target ul .icon,
-  #t8:target ul .icon,
-  #t9:target ul .icon,
-  #t10:target ul .icon,
-  #t11:target ul .icon,
-  #t12:target ul .icon,
-  #t13:target ul .icon,
-  #t14:target ul .icon,
-  #t15:target ul .icon,
-  #t16:target ul .icon,
-  #t17:target ul .icon,
-  #t18:target ul .icon,
-  #t19:target ul .icon,
-  #t20:target ul .icon,
-  #t21:target ul .icon,
-  #t22:target ul .icon,
-  #t23:target ul .icon{
-    transform: scale(.6); 
-    transition-delay: .25s;
-  }
-
-  #t2:target #ts2,
-  #t3:target #ts3,
-  #t4:target #ts4,
-  #t5:target #ts5,
-  #t6:target #ts6,
-  #t7:target #ts7,
-  #t8:target #ts8,
-  #t9:target #ts9,
-  #t10:target #ts10,
-  #t11:target #ts11,
-  #t12:target #ts12,
-  #t13:target #ts13,
-  #t14:target #ts14,
-  #t15:target #ts15,
-  #t16:target #ts16,
-  #t17:target #ts17,
-  #t18:target #ts18,
-  #t19:target #ts19,
-  #t20:target #ts20,
-  #t21:target #ts21,
-  #t22:target #ts22,
-  #t23:target #ts23{
-    transform: scale(1.2) !important;
-  }
-
-
-  ul {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    /*right: 0;*/
-    margin-top: 2%;
-    margin-bottom: 2%;
-    width: 10%;
-    padding: 0;
-    text-align: center;
-  }
-
-  ul li {
-    margin: 30px 0;
-  }
-
-  a {
-    text-decoration: none;
-    font-family: open sans, sans-serif;
-  }
-
-
-  .title, .hint {
-    font-family: open sans, sans-serif;
-    display: block;
-  }
-
-  .title {
-    font-size: 38px;
-  }
-
-  .hint {
-    font-size: 13px;
-  }
-
-  .hint a {
-    color: #EFFF06;
-    transition: all 250ms easet-out;
-  }
-
-  .hint a:hover {
-    color: #FFF;
-  }
-
-  .page .icon {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 10%;
-    left: 0;
-    width: 270px;
-    height: 170px;
-    margin: auto;
-    text-align: center;
-    font-size: 80px;
-    transform: translateX(360%);
-    line-height: 1.3;
-  }
-
-  .sContainer {
-    position: absolute;
-    top: 25%;
-    bottom: 0;
-    right: 10%;
-    left: 0;
-    margin: auto;
-    margin-left: 5%;
-    transform: translateX(180%);
-  }
-
-  #myCarousel {
-    margin-top: 25%;
-  }
-
-  .page#p1 .icon {
-    height: 220px;
-  }
-
-  .icon:hover{
-        color: #FFF172;
-  }
-
-  .page#p1 .icon {
-    transform: translateX(0) !important;
-  }
-
-  #t2:target .page#p2 .icon,
-  #t3:target .page#p3 .icon,
-  #t4:target .page#p4 .icon,
-  #t5:target .page#p5 .icon,
-  #t6:target .page#p6 .icon,
-  #t7:target .page#p7 .icon,
-  #t8:target .page#p8 .icon,
-  #t9:target .page#p9 .icon,
-  #t10:target .page#p10 .icon,
-  #t11:target .page#p11 .icon,
-  #t12:target .page#p12 .icon,
-  #t13:target .page#p13 .icon,
-  #t14:target .page#p14 .icon,
-  #t15:target .page#p15 .icon,
-  #t16:target .page#p16 .icon,
-  #t17:target .page#p17 .icon,
-  #t18:target .page#p18 .icon,
-  #t19:target .page#p19 .icon,
-  #t20:target .page#p20 .icon,
-  #t21:target .page#p21 .icon,
-  #t22:target .page#p22 .icon,
-  #t23:target .page#p23 .icon{
-    transform: translateX(0) !important;
-    transition-delay: 1s;
-  }
-
-
-
-  #t2:target .page#p2 .sContainer,
-  #t3:target .page#p3 .sContainer,
-  #t4:target .page#p4 .sContainer,
-  #t5:target .page#p5 .sContainer,
-  #t6:target .page#p6 .sContainer,
-  #t7:target .page#p7 .sContainer,
-  #t8:target .page#p8 .sContainer,
-  #t9:target .page#p9 .sContainer,
-  #t10:target .page#p10 .sContainer,
-  #t11:target .page#p11 .sContainer,
-  #t12:target .page#p12 .sContainer,
-  #t13:target .page#p13 .sContainer,
-  #t14:target .page#p14 .sContainer,
-  #t15:target .page#p15 .sContainer,
-  #t16:target .page#p16 .sContainer,
-  #t17:target .page#p17 .sContainer,
-  #t18:target .page#p18 .sContainer,
-  #t19:target .page#p19 .sContainer,
-  #t20:target .page#p20 .sContainer,
-  #t21:target .page#p21 .sContainer,
-  #t22:target .page#p22 .sContainer,
-  #t23:target .page#p23 .sContainer{
-    transform: translateX(0) !important;
-    transition-delay: 1s;
-       background-image: url({% static 'img/build.png' %});
-       background-position: 80% bottom;
-       background-size:  auto auto;
-       background-repeat: no-repeat;  
-  }
-
-  .credit{
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
-   font-size: 10px;
- }
-
- .credit a {
-   color: #fff
- }
-
- .toggled {
-
-  transform: translateX(0) !important;
-}
-
-</style>
 
 
 <script src={% static 'js/prefixfree.min.js' %}></script>
@@ -553,13 +33,13 @@
   <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
     <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
 
-
       <div id="cd-login"> <!-- log in form -->
+    {% if not user.is_authenticated %}
         <form class="cd-form" id="loginForm" action="login_view" method="post">
           <p class="fieldset">
             <label class="image-replace cd-username" for="signin-username">LDC-ID</label>
             <input class="full-width has-padding has-border" name="username" id="signin-username" type="username" placeholder="Nombre de Usuario LDC">
-            <span class="cd-error-message">Error message here!</span>
+            <span class="cd-error-message">No puede estar vacío</span>
           </p>
 
           <p class="fieldset">
@@ -575,6 +55,20 @@
         </form>
         
         <!-- <a href="#0" class="cd-close-form">Close</a> -->
+    {% else %}
+        <form class="cd-form" id="loginForm" action="nominate_view" method="post">
+          <p class="fieldset ui-widget">
+            <label class="image-replace cd-username" for="nomName">Nombre de la persona</label>
+            <input class="full-width has-padding has-border" name="username" id="nomName" type="username" placeholder="Nombre a nominar">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+
+          {% csrf_token %}
+
+            <input class="full-width" type="submit" value="¡Nominar!" onclick="submitLogin()">
+        </form>
+    {% endif %}
       </div> <!-- cd-login -->
 
       <a href="#0" class="cd-close-form">Close</a>
@@ -608,30 +102,31 @@
         <section >  
          <ul  style="overflow-y: scroll;  overflow-x: hidden">
            {% if user.is_authenticated %}
-           <a data-target="#my-page" href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
-           <a class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
-           <a class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
-           <a class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
-           <a class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
-           <a class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
-           <a class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
-           <a class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
-           <a class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
-           <a class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
-           <a class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
-           <a class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
-           <a class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
-           <a class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
-           <a class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
-           <a class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
-           <a class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
-           <a class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
-           <a class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
-           <a class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
-           <a class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
-           <a class="pL" destino="22" data-target="#my-page" href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
-           <a class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
-           <a href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
+ <a rel="tooltip" title="Inicio" data-target="#my-page" href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
+ <a rel="tooltip" title="CompuAdoptado" class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
+ <a rel="tooltip" title="CompuBully" class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
+ <a rel="tooltip" title="CompuButt" class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
+ <a rel="tooltip" title="CompuCartoon" class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
+ <a rel="tooltip" title="CompuChancero" class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
+ <a rel="tooltip" title="CompuComadre" class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
+ <a rel="tooltip" title="CompuCompadre" class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
+ <a rel="tooltip" title="CompuCono" class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
+ <a rel="tooltip" title="CompuCuaima" class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
+ <a rel="tooltip" title="CompuCuchi" class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
+ <a rel="tooltip" title="CompuFalso" class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
+ <a rel="tooltip" title="CompuFitness" class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
+ <a rel="tooltip" title="CompuGordito" class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
+ <a rel="tooltip" title="CompuLolas" class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
+ <a rel="tooltip" title="CompuLove" class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
+ <a rel="tooltip" title="CompuMami" class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
+ <a rel="tooltip" title="CompuMaster" class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
+ <a rel="tooltip" title="CompuPapi" class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
+ <a rel="tooltip" title="CompuPro" class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
+ <a rel="tooltip" title="CompuProductista" class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+ <a rel="tooltip" title="CompuTeam" class="pL" destino="22" data-target="#my-page" href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
+ <a rel="tooltip" title="CompuTukky" class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
+ <hr>
+ <a rel="tooltip" title="Salir" href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
            {% endif %}
 
          </ul>
@@ -639,7 +134,7 @@
 
          <div class="page" id="p1">
            <center style="">
-              <img src="{% static 'img/GORDITO.png' %}" alt="COMPUSHOW" width="20%"/>
+              <img src="{% static 'img/COMPUSHOW.png' %}" alt="COMPUSHOW" width="20%"/>
             <div class="row">
 
             <h2>Bienvenidos al compushow 2016</h1><span class="hint">
@@ -650,7 +145,6 @@
             </br>
             </div>
             <div class="row">
-           <a> hola </a>
 
               <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="15%"/>
             </br>
@@ -661,7 +155,9 @@
 
            {% if user.is_authenticated %}
             {% csrf_token %}
-                  <a href="/sistemaCS/logout" class="logoutC">{{request.session.name}} <span class="fa fa-sign-out"></span></a>
+                <div style="margin-top: 3%">
+                  <a  href="/sistemaCS/logout" class="logoutC" >{{request.session.name}} <span class="fa fa-sign-out"></span></a>
+                </div>
             {%else%}
                   <center>
                       <div class="main-nav">
@@ -671,6 +167,9 @@
                       </div>
                       {% if wrongData %}
                         <p style="color: red"> Datos erroneos </p>
+                      {% endif %}
+                      {% if noComputista %}
+                        <p style="color: red"> Lo lamentamos, solo se permiten computistas. </p>
                       {% endif %}
                   </center>
             {%endif%}
@@ -730,11 +229,12 @@
 <script type="text/javascript">
   $(".pL").click(function(event) {
     var myi = $(this).attr("destino");
-    var focus = "#p"+myi
-    console.log(focus)
+    var focus = "#p"+myi;
+    console.log(focus);
     $.ajax({
       url: 'myCategory/',
       data: { id:myi,
+              addVote : 'false',
               csrfmiddlewaretoken:'{{ csrf_token }}'
       }, 
       type: "POST",
@@ -758,26 +258,57 @@
     </script>
 
 
+
+
     <script type="text/javascript">
-      function hideGallery(id){
-        document.getElementById("myCarousel").style.transform = "translateX(350%)";
+      function hideGallery(id,imgList,name,hasVoted,pId,nuid){
+        document.getElementById("carousel-div").style.transform = "translateX(350%)";
         setTimeout(
-          function(){showGallery(id);
+          function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
           },300); 
         /*Load Ajax*/
       }
-      function showGallery(id){
+      function showGallery(id,imgList,name,hasVoted,pId,nuid){
         /*Load Ajax*/
-        document.getElementById("myCarousel").style.transform = "translateX(0)";
+        var focus = id;
+        console.log(focus);
+    $.ajax({
+      url: 'myCarousel/',
+      data: { carId: id,
+              pId: pId,
+              imgList: imgList,
+              carNName: name,
+              Voted   : hasVoted,
+              nuid     : nuid,
+              csrfmiddlewaretoken:'{{ csrf_token }}'
+      }, 
+      type: "POST",
+      success: function(data) {
+      $("#carousel-div").html(data);
+      }
+    });
+        document.getElementById("carousel-div").style.transform = "translateX(0)";
       }
 
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+    <script src="{% static 'js/tooltip.js' %}"></script> 
 <script language="javascript" type="text/javascript">
     function submitLogin() {
        $("#loginForm").submit();
     }
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+</script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+  $("#nomName").autocomplete({
+    source: "/get_users/",
+    minLength: 2,
+  });
+});
 </script>
   </body>
   </html>
