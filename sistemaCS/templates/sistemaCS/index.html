@@ -257,18 +257,24 @@
 {% csrf_token %}
 
 <script type="text/javascript">
+
+
   function hideGallery(id,imgList,name,hasVoted,pId,nuid){
-    document.getElementById("carousel-div").style.transform = "translateX(350%)";
+    $(".woo").fadeOut("fast");
     setTimeout(
       function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
       },200); 
     /*Load Ajax*/
   }
   function showGallery(id,imgList,name,hasVoted,pId,nuid){
-    /*Load Ajax*/
-    var focus = id;
-    console.log(focus);
-    $.ajaxSetup({ cache: false });
+   $(document).ready(function(){
+
+        console.log(id);
+        console.log(pId);
+        console.log(imgList);
+        console.log(name);
+        console.log(hasVoted);
+        console.log(nuid);
     $.ajax({
       url: 'myCarousel/',
       data: { carId: id,
@@ -281,14 +287,27 @@
       }, 
       type: "POST",
       success: function(data) {
-        $("#carousel-div").html(data);
+        console.log(" WW ");
+        $('.woo').html(data);
       }
     });
-    document.getElementById("carousel-div").style.transform = "translateX(0)";
-  }
+    setTimeout(
+      function(){
+        console.log(" HOLLISSS" );
+        $(".woo").fadeIn();
+        console.log(" HOLLISSS 2" );
+      },300); 
+
+
+
+    })
+  };
+
 </script>
 
+<script type="text/javascript">
 
+</script>
 <script type="text/javascript">
   $( document ).ready(function() {
     console.log(focus);

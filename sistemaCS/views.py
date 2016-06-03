@@ -258,7 +258,10 @@ def myCarousel(request):
 def get_users(request):
     print('did it work?')
     q = request.GET.get('term', '')
-    users = Usuario.objects.filter(name__contains = q )[:20]
+    q=q.split()
+    users = Usuario.objects.filter(name__icontains = q[0] )
+    for sq in q[1:]:
+      users = users.filter(name__icontains = sq )
     results = []
     for user in users:
         user_json = {}
