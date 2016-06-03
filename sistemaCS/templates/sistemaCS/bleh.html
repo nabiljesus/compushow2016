@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+
+  function hideGallery(id,imgList,name,hasVoted,pId,nuid){
+    alert('hola');
+    document.getElementById("carousel-div").style.transform = "translateX(350%)";
+    setTimeout(
+      function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
+      },200); 
+    /*Load Ajax*/
+  }
+  function showGallery(id,imgList,name,hasVoted,pId,nuid){
+   $(document).ready(function(){
+
+        console.log(id);
+        console.log(pId);
+        console.log(imgList);
+        console.log(name);
+        console.log(hasVoted);
+        console.log(nuid);
+    $.ajax({
+      url: 'myCarousel/',
+      data: { carId: id,
+        pId: pId,
+        imgList: imgList,
+        carNName: name,
+        Voted   : hasVoted,
+        nuid     : nuid,
+        csrfmiddlewaretoken:'{{ csrf_token }}'
+      }, 
+      type: "POST",
+      success: function(data) {
+        console.log(" WW ");
+      $(".woo").html(data);
+      }
+    });
+
+    console.log(" HOLLISSS" );
+    document.getElementById("carousel-div").style.transform = "translateX(0%)";
+    console.log(" HOLLISSS 2" );
+
+    })
+  };
+
+</script>

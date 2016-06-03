@@ -15,6 +15,7 @@ from operator import itemgetter
 import ldap
 import random
 import json
+import unicodedata
 
 '''def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -181,6 +182,7 @@ def addNom(nuid,uid,catId,mdesc=""):
   Ccat=Categoria.objects.filter(id=catId).first()
   Uunom=Usuario.objects.filter(uid=nuid).first()
   Uuid=Usuario.objects.filter(uid=uid).first()
+  mdesc=unicodedata.normalize('NFD', mdesc).encode('ascii', 'ignore')
   noms=Nominacion(idcat=Ccat, unom=Uunom, uid=Uuid, desc=mdesc)
   noms.save()
   print('SE SUPONE....')
