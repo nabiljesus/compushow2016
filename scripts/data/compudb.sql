@@ -779,9 +779,9 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 39, true);
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
 1	pbkdf2_sha256$20000$wMcEezYyMhQK$2aqH7euPJbJyHivs8OuQzAqOlO1Oux9Watu8luQ5mKA=	2016-06-01 02:17:52.86943-04	t	admin				t	t	2016-06-01 02:17:37.607389-04
-2	pbkdf2_sha256$20000$Q7RerUHU261l$8SmaKBiPBGyTgjh+PI7Vw+aXK7LN6ZW3bmzs4f5Wct8=	2016-06-01 23:17:32.29926-04	t	admin2				t	t	2016-06-01 21:59:46.671865-04
 4	pbkdf2_sha256$20000$GpPYlHxTBrEh$EVIyQF5OWgZAcjGw7QKEmbHWlx4YAkw0Z7RVBW8EqhE=	2016-06-02 00:30:17.850837-04	f	11-10683				f	t	2016-06-02 00:29:47.563261-04
-3	pbkdf2_sha256$20000$wTKHQwO3DzIn$DKbEf/vx/I7W2EdvOamzqvFN/wA+C0RSnHuiVNEdaCY=	2016-06-02 00:41:06.691029-04	f	nabil				f	t	2016-06-02 00:27:35.412661-04
+3	pbkdf2_sha256$20000$wTKHQwO3DzIn$DKbEf/vx/I7W2EdvOamzqvFN/wA+C0RSnHuiVNEdaCY=	2016-06-02 21:28:17.518054-04	f	nabil				f	t	2016-06-02 00:27:35.412661-04
+2	pbkdf2_sha256$20000$Q7RerUHU261l$8SmaKBiPBGyTgjh+PI7Vw+aXK7LN6ZW3bmzs4f5Wct8=	2016-06-02 21:30:53.4766-04	t	admin2				t	t	2016-06-01 21:59:46.671865-04
 \.
 
 
@@ -856,6 +856,98 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 27	2016-06-01 02:55:00.576858-04	4	<Usuario: 11-10683>=><Usuario: 11-10683>( <Categoria: adoptado> )	3		11	1
 28	2016-06-01 22:01:15.923878-04	11-10683	11-10683	3		10	2
 29	2016-06-01 22:03:33.183872-04	06-85155	06-85155	3		10	2
+30	2016-06-02 09:43:48.872735-04	21	team	3		9	2
+31	2016-06-02 09:43:48.904449-04	20	productista	3		9	2
+32	2016-06-02 09:43:48.926178-04	19	pro	3		9	2
+33	2016-06-02 09:43:48.948468-04	18	papi	3		9	2
+34	2016-06-02 09:43:48.969285-04	17	master	3		9	2
+35	2016-06-02 09:43:48.990565-04	16	mami	3		9	2
+36	2016-06-02 09:43:49.012366-04	15	love	3		9	2
+37	2016-06-02 09:43:49.033919-04	14	lolas	3		9	2
+38	2016-06-02 09:43:49.055897-04	13	gordito	3		9	2
+39	2016-06-02 09:43:49.076639-04	12	fitness	3		9	2
+40	2016-06-02 09:43:49.098949-04	11	falso	3		9	2
+41	2016-06-02 09:43:49.12028-04	10	cuchi	3		9	2
+42	2016-06-02 09:43:49.141474-04	8	cuaima	3		9	2
+43	2016-06-02 09:43:49.16329-04	7	cono	3		9	2
+44	2016-06-02 09:43:49.18451-04	6	compadre	3		9	2
+45	2016-06-02 09:43:49.206795-04	5	comadre	3		9	2
+46	2016-06-02 09:43:49.227687-04	4	chancero	3		9	2
+47	2016-06-02 09:43:49.250037-04	3	cartoon	3		9	2
+48	2016-06-02 09:43:49.270587-04	2	butt	3		9	2
+49	2016-06-02 09:44:41.935218-04	22	bully	1		9	2
+50	2016-06-02 09:44:54.382598-04	23	butt	1		9	2
+51	2016-06-02 09:45:03.479267-04	24	cartoon	1		9	2
+52	2016-06-02 09:45:09.694724-04	25	chancero	1		9	2
+53	2016-06-02 09:45:14.887034-04	26	comadre	1		9	2
+54	2016-06-02 09:45:19.334953-04	27	compadre	1		9	2
+55	2016-06-02 09:45:25.238151-04	28	cono	1		9	2
+56	2016-06-02 09:45:30.871409-04	29	cuaima	1		9	2
+57	2016-06-02 09:45:35.454278-04	30	cuchi	1		9	2
+58	2016-06-02 09:45:41.833271-04	31	falso	1		9	2
+59	2016-06-02 09:45:45.966886-04	32	fitness	1		9	2
+60	2016-06-02 09:45:50.382461-04	33	gordito	1		9	2
+61	2016-06-02 09:45:56.542025-04	34	lolas	1		9	2
+62	2016-06-02 09:46:02.390148-04	35	love	1		9	2
+63	2016-06-02 09:46:07.143842-04	36	mami	1		9	2
+64	2016-06-02 09:46:12.197881-04	37	master	1		9	2
+65	2016-06-02 09:46:16.990966-04	38	papi	1		9	2
+66	2016-06-02 09:46:21.414459-04	39	pro	1		9	2
+67	2016-06-02 09:46:25.853743-04	40	productista	1		9	2
+68	2016-06-02 09:46:31.214885-04	41	team	1		9	2
+69	2016-06-02 09:46:40.544388-04	42	tukky	1		9	2
+70	2016-06-02 09:51:06.064285-04	42	tukky	3		9	2
+71	2016-06-02 09:51:06.103229-04	41	team	3		9	2
+72	2016-06-02 09:51:06.124276-04	40	productista	3		9	2
+73	2016-06-02 09:51:06.145653-04	39	pro	3		9	2
+74	2016-06-02 09:51:06.167438-04	38	papi	3		9	2
+75	2016-06-02 09:51:06.188622-04	37	master	3		9	2
+76	2016-06-02 09:51:06.216072-04	36	mami	3		9	2
+77	2016-06-02 09:51:06.252089-04	35	love	3		9	2
+78	2016-06-02 09:51:06.276832-04	34	lolas	3		9	2
+79	2016-06-02 09:51:06.298914-04	33	gordito	3		9	2
+80	2016-06-02 09:51:06.319896-04	32	fitness	3		9	2
+81	2016-06-02 09:51:06.341187-04	31	falso	3		9	2
+82	2016-06-02 09:51:06.36382-04	30	cuchi	3		9	2
+83	2016-06-02 09:51:06.384168-04	29	cuaima	3		9	2
+84	2016-06-02 09:51:06.406008-04	28	cono	3		9	2
+85	2016-06-02 09:51:06.427746-04	27	compadre	3		9	2
+86	2016-06-02 09:51:06.44906-04	26	comadre	3		9	2
+87	2016-06-02 09:51:06.470806-04	25	chancero	3		9	2
+88	2016-06-02 09:51:06.492008-04	24	cartoon	3		9	2
+89	2016-06-02 09:51:06.51391-04	23	butt	3		9	2
+90	2016-06-02 09:51:06.535129-04	22	bully	3		9	2
+91	2016-06-02 09:51:42.726465-04	2	bully	1		9	2
+92	2016-06-02 09:52:02.765041-04	3	butt	1		9	2
+93	2016-06-02 09:52:08.773351-04	4	cartoon	1		9	2
+94	2016-06-02 09:52:13.141182-04	5	chancero	1		9	2
+95	2016-06-02 09:52:25.351209-04	6	comadre	1		9	2
+96	2016-06-02 09:52:29.213473-04	7	compadre	1		9	2
+97	2016-06-02 09:52:34.956383-04	8	cono	1		9	2
+98	2016-06-02 09:52:40.55004-04	9	cuaima	1		9	2
+99	2016-06-02 09:52:48.781046-04	10	cuchi	1		9	2
+100	2016-06-02 09:52:53.684318-04	11	falso	1		9	2
+101	2016-06-02 09:52:59.422304-04	12	fitness	1		9	2
+102	2016-06-02 09:53:05.580429-04	13	gordito	1		9	2
+103	2016-06-02 09:53:09.228939-04	14	lolas	1		9	2
+104	2016-06-02 09:53:14.157252-04	15	love	1		9	2
+105	2016-06-02 09:53:18.148308-04	16	mami	1		9	2
+106	2016-06-02 09:53:20.773851-04	17	master	1		9	2
+107	2016-06-02 09:53:27.684539-04	18	papi	1		9	2
+108	2016-06-02 09:53:32.454268-04	19	pro	1		9	2
+109	2016-06-02 09:53:39.109611-04	20	productista	1		9	2
+110	2016-06-02 09:53:43.021807-04	21	team	1		9	2
+111	2016-06-02 09:53:46.884556-04	22	tukky	1		9	2
+112	2016-06-02 11:32:02.065926-04	5	<Usuario: nabil>=><Usuario: andrea>( <Categoria: adoptado> )	1		11	2
+113	2016-06-02 12:11:23.763926-04	6	<Usuario: 07-85717>=><Usuario: 10-10658>( <Categoria: adoptado> )	1		11	2
+114	2016-06-02 12:11:35.805716-04	7	<Usuario: 06-85155>=><Usuario: 06-85521>( <Categoria: adoptado> )	1		11	2
+115	2016-06-02 12:13:56.211094-04	1	u'5.png'	1		12	2
+116	2016-06-02 12:34:07.296997-04	8	<Usuario: 06-85155>=><Usuario: andrea>( <Categoria: adoptado> )	1		11	2
+117	2016-06-02 13:04:58.918864-04	1	u'5.png'	2	No fields changed.	12	2
+118	2016-06-02 13:17:01.455037-04	1	u'5.jph'	2	Changed img.	12	2
+119	2016-06-02 13:17:09.904951-04	1	u'5.jpg'	2	Changed img.	12	2
+120	2016-06-02 14:11:00.567245-04	2	u'gugue.jpg'	1		12	2
+121	2016-06-02 16:50:11.251655-04	23	blah	3		9	2
 \.
 
 
@@ -863,7 +955,7 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: compushowmaster
 --
 
-SELECT pg_catalog.setval('django_admin_log_id_seq', 29, true);
+SELECT pg_catalog.setval('django_admin_log_id_seq', 121, true);
 
 
 --
@@ -932,6 +1024,11 @@ SELECT pg_catalog.setval('django_migrations_id_seq', 17, true);
 
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 235ysw21z6x4t84ka010jk2wgrs8zr2e	Njc0MTFiZThhZjE5MDYwY2UwZjU2OTIyYjM3MmM5NDk4OTZlZTA4Mjp7Il9hdXRoX3VzZXJfaGFzaCI6ImZlMDgyNWMxZmM1MWE5OTA5OTJlNzM1NjVhNjNmM2NjMGIzM2I3NzgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2016-06-15 02:17:52.89139-04
+q66mryu3082sdok4p9umcfz6a04tc36f	YWE0ZjU0NDMzYzQ1ZmYzYjFkYzMzZWEyNzc0MTg3MmIwZWFmYjg2MDp7Il9hdXRoX3VzZXJfaGFzaCI6IjFjMGMxYTk5NWI3NGYzZmQyNjE0N2E0NzBlOTQxN2NhNGY0ZTJmOTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=	2016-06-16 21:30:53.49935-04
+ozcxit6crzjaosye4dq5zfte5cuw1mkw	NmE4NmEwNmQxMTdmMTE2NzI1MzcxMGI2MDM3MmM1MzA4ZGNiYzE5Mjp7Imhhc1ZvdGVkIjowLCJjYXRlZ29yeSI6IjgiLCJuYW1lIjoiTmFiaWwgSmVzdXMiLCJfYXV0aF91c2VyX2lkIjoiMyIsImZyb21Ob21pbmF0ZSI6ZmFsc2UsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMjA4N2ZlY2E5NTY0N2Q0NGU1ODQyNWM4OWM5ODRjZmE5NmQ5MjNjMCIsInVpZCI6Im5hYmlsIn0=	2016-06-16 19:36:49.115267-04
+4hzin09qe2zebnj27tbk2ykarvcldcs4	ZDQyN2JhMWFiMjhhYWUxZWUyMjE2OGJlZDk3N2JiOWVlNjQwYjJjMzp7Imhhc1ZvdGVkIjowLCJjYXRlZ29yeSI6IjIiLCJuYW1lIjoiTmFiaWwgSmVzdXMiLCJfYXV0aF91c2VyX2lkIjoiMyIsImZyb21Ob21pbmF0ZSI6ZmFsc2UsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMjA4N2ZlY2E5NTY0N2Q0NGU1ODQyNWM4OWM5ODRjZmE5NmQ5MjNjMCIsInVpZCI6Im5hYmlsIn0=	2016-06-16 21:58:12.306853-04
+7p40qo7b9efjou4fi93799qlihwbucmc	YWE0ZjU0NDMzYzQ1ZmYzYjFkYzMzZWEyNzc0MTg3MmIwZWFmYjg2MDp7Il9hdXRoX3VzZXJfaGFzaCI6IjFjMGMxYTk5NWI3NGYzZmQyNjE0N2E0NzBlOTQxN2NhNGY0ZTJmOTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=	2016-06-16 12:09:48.749394-04
+c4y512rf4gh6xvwfk3mf3wjm0eq5tbih	YWE0ZjU0NDMzYzQ1ZmYzYjFkYzMzZWEyNzc0MTg3MmIwZWFmYjg2MDp7Il9hdXRoX3VzZXJfaGFzaCI6IjFjMGMxYTk5NWI3NGYzZmQyNjE0N2E0NzBlOTQxN2NhNGY0ZTJmOTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=	2016-06-16 12:13:10.089022-04
 \.
 
 
@@ -941,13 +1038,14 @@ COPY django_session (session_key, session_data, expire_date) FROM stdin;
 
 COPY "sistemaCS_categoria" (id, nombre) FROM stdin;
 1	adoptado
-2	butt
-3	cartoon
-4	chancero
-5	comadre
-6	compadre
-7	cono
-8	cuaima
+2	bully
+3	butt
+4	cartoon
+5	chancero
+6	comadre
+7	compadre
+8	cono
+9	cuaima
 10	cuchi
 11	falso
 12	fitness
@@ -960,6 +1058,7 @@ COPY "sistemaCS_categoria" (id, nombre) FROM stdin;
 19	pro
 20	productista
 21	team
+22	tukky
 \.
 
 
@@ -967,7 +1066,7 @@ COPY "sistemaCS_categoria" (id, nombre) FROM stdin;
 -- Name: sistemaCS_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: compushowmaster
 --
 
-SELECT pg_catalog.setval('"sistemaCS_categoria_id_seq"', 21, true);
+SELECT pg_catalog.setval('"sistemaCS_categoria_id_seq"', 23, true);
 
 
 --
@@ -990,6 +1089,8 @@ SELECT pg_catalog.setval('"sistemaCS_choice_id_seq"', 1, false);
 --
 
 COPY "sistemaCS_imgnominacion" (id, img, idcat_id, idnom_id) FROM stdin;
+1	5.jpg	1	5
+2	gugue.jpg	1	5
 \.
 
 
@@ -997,7 +1098,7 @@ COPY "sistemaCS_imgnominacion" (id, img, idcat_id, idnom_id) FROM stdin;
 -- Name: sistemaCS_imgnominacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: compushowmaster
 --
 
-SELECT pg_catalog.setval('"sistemaCS_imgnominacion_id_seq"', 1, false);
+SELECT pg_catalog.setval('"sistemaCS_imgnominacion_id_seq"', 2, true);
 
 
 --
@@ -1005,6 +1106,21 @@ SELECT pg_catalog.setval('"sistemaCS_imgnominacion_id_seq"', 1, false);
 --
 
 COPY "sistemaCS_nominacion" (id, idcat_id, uid_id, unom_id, "desc") FROM stdin;
+5	1	nabil	andrea	Una vez dijo tal cosa.
+6	1	07-85717	10-10658	ddddddddddddddddddddddddddddddddddddddddddd
+7	1	06-85155	06-85521	sadasdasdad
+8	1	06-85155	andrea	yes
+9	1	nabil	10-10658	
+10	1	nabil	nabil	
+12	3	nabil	nabil	
+13	1	nabil	06-85521	
+14	3	nabil	mnabhan	
+15	4	nabil	09-10118	
+16	7	nabil	09-10797	
+17	3	nabil	cchang	
+18	5	nabil	07-85846	07-85846
+19	5	nabil	abaranya	asdas
+22	3	nabil	08-11034	asdasdt4525
 \.
 
 
@@ -1012,7 +1128,7 @@ COPY "sistemaCS_nominacion" (id, idcat_id, uid_id, unom_id, "desc") FROM stdin;
 -- Name: sistemaCS_nominacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: compushowmaster
 --
 
-SELECT pg_catalog.setval('"sistemaCS_nominacion_id_seq"', 4, true);
+SELECT pg_catalog.setval('"sistemaCS_nominacion_id_seq"', 22, true);
 
 
 --
