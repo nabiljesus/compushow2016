@@ -54,6 +54,7 @@
     var focus = "#p"+num
     hideGallery2();
     $.ajax({
+      uniq_param : (new Date()).getTime(),
       url: 'myCategory/',
       data: { id: num,
               addVote : 'true',

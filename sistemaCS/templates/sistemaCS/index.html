@@ -1,30 +1,35 @@
 {% load static %}
 
-  <!DOCTYPE html>
-  <html >
-  <head>
-    <meta charset="UTF-8">
-    <title>Compushow 2016</title>
-    <meta name="description" content="Sistema compushow 2016">
-    <meta name="author" content="Nabil J. Márquez">
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel='stylesheet prefetch' href={% static 'css/font-awesome.css' %}>
-    <link href="{% static 'css/ionic.css' %}" rel="stylesheet">
-    <script src="{% static 'js/ionic.js' %}"></script>
-    <script src="{% static 'js/index.js' %}"></script>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/full-slider.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
-    <link rel="stylesheet" href="{% static 'css/tooltip.css' %}"> <!-- Gem style -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Gem style -->
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}"> <!-- Gem style -->
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" type="text/css" media="all"> <!-- Gem style -->
-    <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Compushow 2016</title>
+  <meta name="description" content="Sistema compushow 2016">
+  <meta name="author" content="Nabil J. Márquez">
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel='stylesheet prefetch' href={% static 'css/font-awesome.css' %}>
+  <link href="{% static 'css/ionic.css' %}" rel="stylesheet">
+  <script src="{% static 'js/ionic.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/full-slider.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+  <link rel="stylesheet" href="{% static 'css/tooltip.css' %}"> <!-- Gem style -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Gem style -->
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}"> <!-- Gem style -->
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" type="text/css" media="all"> <!-- Gem style -->
+  <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+  <script src="{% static 'js/tooltip.js' %}"></script> 
+  <script src="{% static 'js/jquery2.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
 
 
-
-<script src={% static 'js/prefixfree.min.js' %}></script>
+  <script src={% static 'js/prefixfree.min.js' %}></script>
 
 
 </head>
@@ -34,7 +39,7 @@
     <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
 
       <div id="cd-login"> <!-- log in form -->
-    {% if not user.is_authenticated %}
+        {% if not user.is_authenticated %}
         <form class="cd-form" id="loginForm" action="login_view" method="post">
           <p class="fieldset">
             <label class="image-replace cd-username" for="signin-username">LDC-ID</label>
@@ -51,15 +56,15 @@
 
           {% csrf_token %}
 
-            <input class="full-width" type="submit" value="Login" onclick="submitLogin()">
+          <input class="full-width" type="submit" value="Login" onclick="submitLogin()">
         </form>
         
         <!-- <a href="#0" class="cd-close-form">Close</a> -->
-    {% else %}
+        {% else %}
         <form class="cd-form" id="loginForm" action="nominate_view" method="post">
-            <center>
-              <h2 style="color:#FFF">Introduzca el usuario del nominado o busque por nombre.</h2>
-            </center>
+          <center>
+            <h2 style="color:#FFF">Introduzca el usuario del nominado o busque por nombre.</h2>
+          </center>
           <p class="fieldset ui-widget">
             <label class="image-replace cd-username" for="nomName">Nombre de la persona</label>
             <input class="full-width has-padding has-border" name="username" id="nomName" type="username" placeholder="Nombre a nominar">
@@ -69,9 +74,9 @@
 
           {% csrf_token %}
 
-            <input class="full-width" type="submit" value="¡Nominar!" onclick="submitLogin()">
+          <input class="full-width" type="submit" value="¡Nominar!" onclick="submitLogin()">
         </form>
-    {% endif %}
+        {% endif %}
       </div> <!-- cd-login -->
 
       <a href="#0" class="cd-close-form">Close</a>
@@ -84,146 +89,146 @@
      <div id="t3">
        <div id="t4">
         <div id="t5">
-  <div id="t6">
-   <div id="t7">
-     <div id="t8">
-       <div id="t9">
-        <div id="t10">
-  <div id="t11">
-   <div id="t12">
-     <div id="t13">
-       <div id="t14">
-        <div id="t15">
-  <div id="t16">
-   <div id="t17">
-     <div id="t18">
-       <div id="t19">
-        <div id="t20">
-        <div id="t21">
-        <div id="t22">
-        <div id="t23">
-        <section >  
-         <ul  style="overflow-y: scroll;  overflow-x: hidden">
-           {% if user.is_authenticated %}
- <a rel="tooltip" title="Inicio" data-target="#my-page" href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
- <a rel="tooltip" title="CompuAdoptado" class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
- <a rel="tooltip" title="CompuBully" class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
- <a rel="tooltip" title="CompuButt" class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
- <a rel="tooltip" title="CompuCartoon" class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
- <a rel="tooltip" title="CompuChancero" class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
- <a rel="tooltip" title="CompuComadre" class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
- <a rel="tooltip" title="CompuCompadre" class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
- <a rel="tooltip" title="CompuCono" class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
- <a rel="tooltip" title="CompuCuaima" class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
- <a rel="tooltip" title="CompuCuchi" class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
- <a rel="tooltip" title="CompuFalso" class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
- <a rel="tooltip" title="CompuFitness" class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
- <a rel="tooltip" title="CompuGordito" class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
- <a rel="tooltip" title="CompuLolas" class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
- <a rel="tooltip" title="CompuLove" class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
- <a rel="tooltip" title="CompuMami" class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
- <a rel="tooltip" title="CompuMaster" class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
- <a rel="tooltip" title="CompuPapi" class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
- <a rel="tooltip" title="CompuPro" class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
- <a rel="tooltip" title="CompuProductista" class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
- <a rel="tooltip" title="CompuTeam" class="pL" destino="22" data-target="#my-page" href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
- <a rel="tooltip" title="CompuTukky" class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
- <hr>
- <a rel="tooltip" title="Salir" href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
-           {% endif %}
+          <div id="t6">
+           <div id="t7">
+             <div id="t8">
+               <div id="t9">
+                <div id="t10">
+                  <div id="t11">
+                   <div id="t12">
+                     <div id="t13">
+                       <div id="t14">
+                        <div id="t15">
+                          <div id="t16">
+                           <div id="t17">
+                             <div id="t18">
+                               <div id="t19">
+                                <div id="t20">
+                                  <div id="t21">
+                                    <div id="t22">
+                                      <div id="t23">
+                                        <section >  
+                                         <ul  style="overflow-y: scroll;  overflow-x: hidden">
+                                           {% if user.is_authenticated %}
+                                           <a rel="tooltip" title="Inicio" data-target="#my-page" href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
+                                           <a rel="tooltip" title="CompuAdoptado" class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
+                                           <a rel="tooltip" title="CompuBully" class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
+                                           <a rel="tooltip" title="CompuButt" class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
+                                           <a rel="tooltip" title="CompuCartoon" class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
+                                           <a rel="tooltip" title="CompuChancero" class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
+                                           <a rel="tooltip" title="CompuComadre" class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
+                                           <a rel="tooltip" title="CompuCompadre" class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
+                                           <a rel="tooltip" title="CompuCono" class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
+                                           <a rel="tooltip" title="CompuCuaima" class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
+                                           <a rel="tooltip" title="CompuCuchi" class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
+                                           <a rel="tooltip" title="CompuFalso" class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
+                                           <a rel="tooltip" title="CompuFitness" class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
+                                           <a rel="tooltip" title="CompuGordito" class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
+                                           <a rel="tooltip" title="CompuLolas" class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
+                                           <a rel="tooltip" title="CompuLove" class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
+                                           <a rel="tooltip" title="CompuMami" class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
+                                           <a rel="tooltip" title="CompuMaster" class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
+                                           <a rel="tooltip" title="CompuPapi" class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
+                                           <a rel="tooltip" title="CompuPro" class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
+                                           <a rel="tooltip" title="CompuProductista" class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+                                           <a rel="tooltip" title="CompuTeam" class="pL" destino="22" data-target="#my-page" href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
+                                           <a rel="tooltip" title="CompuTukky" class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
+                                           <hr>
+                                           <a rel="tooltip" title="Salir" href="/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
+                                           {% endif %}
 
-         </ul>
-<div class="page" id="my-page"></div>
+                                         </ul>
+                                         <div class="page" id="my-page"></div>
 
-         <div class="page" id="p1">
-           <center style="">
-              <img src="{% static 'img/COMPUSHOW.png' %}" alt="COMPUSHOW" width="20%"/>
-            <div class="row">
+                                         <div class="page" id="p1">
+                                           <center style="">
+                                            <img src="{% static 'img/COMPUSHOW.png' %}" alt="COMPUSHOW" width="20%"/>
+                                            <div class="row">
 
-            <h2>Bienvenidos al compushow 2016</h1><span class="hint">
+                                              <h2>Bienvenidos al compushow 2016</h1><span class="hint">
 
-            </br>
-            <h4>¡20 categorías esperan por tu nominación!<br>
-            ¿Quiénes serán los ganadores?</h4>
-            </br>
-            </div>
-            <div class="row">
+                                              </br>
+                                              <h4>¡20 categorías esperan por tu nominación!<br>
+                                                ¿Quiénes serán los ganadores?</h4>
+                                              </br>
+                                            </div>
+                                            <div class="row">
 
-              <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="15%"/>
-            </br>
-            </div>
-            <div class="row">
-            
-            </div>
+                                              <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="15%"/>
+                                            </br>
+                                          </div>
+                                          <div class="row">
+                                            
+                                          </div>
 
-           {% if user.is_authenticated %}
-            {% csrf_token %}
-                <div style="margin-top: 3%">
-                  <a  href="/sistemaCS/logout" class="logoutC" >{{request.session.name}} <span class="fa fa-sign-out"></span></a>
-                </div>
-            {%else%}
-                  <center>
-                      <div class="main-nav">
-                        <ul>
-                          <li><a class="cd-signin" href="#0">Iniciar Sesion</a></li>
-                        </ul>
+                                          {% if user.is_authenticated %}
+                                          {% csrf_token %}
+                                          <div style="margin-top: 3%">
+                                            <a  href="/sistemaCS/logout" class="logoutC" >{{request.session.name}} <span class="fa fa-sign-out"></span></a>
+                                          </div>
+                                          {%else%}
+                                          <center>
+                                            <div class="main-nav">
+                                              <ul>
+                                                <li><a class="cd-signin" href="#0">Iniciar Sesion</a></li>
+                                              </ul>
+                                            </div>
+                                            {% if wrongData %}
+                                            <p style="color: red"> Datos erroneos </p>
+                                            {% endif %}
+                                            {% if noComputista %}
+                                            <p style="color: red"> Lo lamentamos, solo se permiten computistas. </p>
+                                            {% endif %}
+                                          </center>
+                                          {%endif%}
+
+                                        </center>
+                                      </div>
+                                      <div class="page" id="p2" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p3" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p4" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p5" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p6" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p7" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p8" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p9" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p10" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p11" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p12" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p13" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p14" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p15" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p16" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p17" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p18" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p19" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p20" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p21" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p22" style="overflow-y: auto;"></div>
+                                      <div class="page" id="p23" style="overflow-y: auto;"></div>
+
+
+                                      
+                                      <!--<p class="credit"> Original Pen by <a href="http://codepen.io/hrtzt/">Alberto Hartzet</a></p>-->
+                                    </section>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      {% if wrongData %}
-                        <p style="color: red"> Datos erroneos </p>
-                      {% endif %}
-                      {% if noComputista %}
-                        <p style="color: red"> Lo lamentamos, solo se permiten computistas. </p>
-                      {% endif %}
-                  </center>
-            {%endif%}
-
-           </center>
-         </div>
-<div class="page" id="p2" style="overflow-y: auto;"></div>
-<div class="page" id="p3" style="overflow-y: auto;"></div>
-<div class="page" id="p4" style="overflow-y: auto;"></div>
-<div class="page" id="p5" style="overflow-y: auto;"></div>
-<div class="page" id="p6" style="overflow-y: auto;"></div>
-<div class="page" id="p7" style="overflow-y: auto;"></div>
-<div class="page" id="p8" style="overflow-y: auto;"></div>
-<div class="page" id="p9" style="overflow-y: auto;"></div>
-<div class="page" id="p10" style="overflow-y: auto;"></div>
-<div class="page" id="p11" style="overflow-y: auto;"></div>
-<div class="page" id="p12" style="overflow-y: auto;"></div>
-<div class="page" id="p13" style="overflow-y: auto;"></div>
-<div class="page" id="p14" style="overflow-y: auto;"></div>
-<div class="page" id="p15" style="overflow-y: auto;"></div>
-<div class="page" id="p16" style="overflow-y: auto;"></div>
-<div class="page" id="p17" style="overflow-y: auto;"></div>
-<div class="page" id="p18" style="overflow-y: auto;"></div>
-<div class="page" id="p19" style="overflow-y: auto;"></div>
-<div class="page" id="p20" style="overflow-y: auto;"></div>
-<div class="page" id="p21" style="overflow-y: auto;"></div>
-<div class="page" id="p22" style="overflow-y: auto;"></div>
-<div class="page" id="p23" style="overflow-y: auto;"></div>
-
-
- 
-<!--<p class="credit"> Original Pen by <a href="http://codepen.io/hrtzt/">Alberto Hartzet</a></p>-->
-</section>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- jQuery -->
@@ -235,14 +240,15 @@
     var focus = "#p"+myi;
     console.log(focus);
     $.ajax({
+      uniq_param : (new Date()).getTime(),
       url: 'myCategory/',
       data: { id:myi,
-              addVote : 'false',
-              csrfmiddlewaretoken:'{{ csrf_token }}'
+        addVote : 'false',
+        csrfmiddlewaretoken:'{{ csrf_token }}'
       }, 
       type: "POST",
       success: function(data) {
-      $(focus).html(data);
+        $(focus).html(data);
       }
     });
   });
@@ -250,22 +256,22 @@
 {% csrf_token %}
 
 <script type="text/javascript">
-$( document ).ready(function() {
     console.log(focus);
     var myi = '{{request.session.category}}'
     var focus = "#p"+myi;
+    $.ajaxSetup({ cache: false });
     $.ajax({
+      uniq_param : (new Date()).getTime(),
       url: 'myCategory/',
       data: { id:myi,
-              addVote : 'false',
-              csrfmiddlewaretoken:'{{ csrf_token }}'
+        addVote : 'false',
+        csrfmiddlewaretoken:'{{ csrf_token }}'
       }, 
       type: "POST",
       success: function(data) {
-      $(focus).html(data);
+        $(focus).html(data);
       }
     });
-});
 </script>
 <!-- Bootstrap Core JavaScript -->
 <script src={% static 'js/bootstrap.min.js' %}></script>
@@ -275,65 +281,63 @@ $( document ).ready(function() {
   $('.carousel').carousel({
         interval: 5000 //changes the speed
       })
-    </script>
+</script>
 
 
 
 
-    <script type="text/javascript">
-      function hideGallery(id,imgList,name,hasVoted,pId,nuid){
-        document.getElementById("carousel-div").style.transform = "translateX(350%)";
-        setTimeout(
-          function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
-          },300); 
-        /*Load Ajax*/
-      }
-      function showGallery(id,imgList,name,hasVoted,pId,nuid){
-        /*Load Ajax*/
-        var focus = id;
-        console.log(focus);
+<script type="text/javascript">
+  function hideGallery(id,imgList,name,hasVoted,pId,nuid){
+    document.getElementById("carousel-div").style.transform = "translateX(350%)";
+    setTimeout(
+      function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
+      },300); 
+    /*Load Ajax*/
+  }
+  function showGallery(id,imgList,name,hasVoted,pId,nuid){
+    /*Load Ajax*/
+    var focus = id;
+    console.log(focus);
+    $.ajaxSetup({ cache: false });
     $.ajax({
+      uniq_param : (new Date()).getTime(),
       url: 'myCarousel/',
       data: { carId: id,
-              pId: pId,
-              imgList: imgList,
-              carNName: name,
-              Voted   : hasVoted,
-              nuid     : nuid,
-              csrfmiddlewaretoken:'{{ csrf_token }}'
+        pId: pId,
+        imgList: imgList,
+        carNName: name,
+        Voted   : hasVoted,
+        nuid     : nuid,
+        csrfmiddlewaretoken:'{{ csrf_token }}'
       }, 
       type: "POST",
       success: function(data) {
-      $("#carousel-div").html(data);
+        $("#carousel-div").html(data);
       }
     });
-        document.getElementById("carousel-div").style.transform = "translateX(0)";
-      }
+    document.getElementById("carousel-div").style.transform = "translateX(0)";
+  }
 
-    </script>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
-    <script src="{% static 'js/tooltip.js' %}"></script> 
-<script language="javascript" type="text/javascript">
-    function submitLogin() {
-       $("#loginForm").submit();
-    }
 </script>
 
-<script src="{% static 'js/jquery2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+  function submitLogin() {
+   $("#loginForm").submit();
+ }
+</script>
+
 <script type="text/javascript">
   $(function() {
-  $("#nomName").autocomplete({
-    source: "get_users/",
-    minLength: 2,
-    focus: function( event, ui ) {
-                $( ".project" ).val( ui.item.label );
-                return false;  
-         }, 
+    $("#nomName").autocomplete({
+      source: "get_users/",
+      minLength: 2,
+      focus: function( event, ui ) {
+        $( ".project" ).val( ui.item.label );
+        return false;  
+      }, 
+    });
   });
-});
 </script>
-  </body>
-  </html>
+</body>
+</html>
 

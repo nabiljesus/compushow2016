@@ -25,7 +25,7 @@
               <center>
               <div class="main-nav">
                 <ul style="margin: 0">
-                  <li style="margin: 0" id="NomButton"><a class="cd-signin votarbut">¡Nomina!</a></li>
+                  <li style="margin: 0" class="NomButton" ><a id="NomButton" class="cd-signin votarbut">¡Nomina!</a></li>
                 </ul>
                 {%if hasVoted %}
                   <p style="color: red"> Ya existe la nominación. </p>
@@ -59,31 +59,5 @@
 </div>
 </div>
 
-<script type="text/javascript">
-window.onload = function(){
-  alert('www');
-  
-  $("#NomButton").click(function(){
-  alert('www');
-  var formModal = $('.cd-user-modal'),
-    formLogin = formModal.find('#cd-login'),
-    formSignup = formModal.find('#cd-signup'),
-    formForgotPassword = formModal.find('#cd-reset-password'),
-    formModalTab = $('.cd-switcher'),
-    tabLogin = formModalTab.children('li').eq(0).children('a'),
-    tabSignup = formModalTab.children('li').eq(1).children('a'),
-    forgotPasswordLink = formLogin.find('.cd-form-bottom-message a'),
-    backToLoginLink = formForgotPassword.find('.cd-form-bottom-message a'),
-    mainNav = $('.main-nav');
 
-    mainNav.children('ul').removeClass('is-visible');
-    formModal.addClass('is-visible');
-    formLogin.addClass('is-selected');
-    formSignup.removeClass('is-selected');
-    formForgotPassword.removeClass('is-selected');
-    tabLogin.addClass('selected');
-    tabSignup.removeClass('selected');
-  });
-});
-</script>
-
+<script src="/static/js/start.js" type="text/javascript"></script>
