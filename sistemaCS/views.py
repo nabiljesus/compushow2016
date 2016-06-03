@@ -171,6 +171,8 @@ def myCategory(request):
         request.session['hasVoted'] = 0
       else:
         context['hasVoted'] = False
+      context['nomsCount']  = str(len(ListaNom))
+      context['isSingular']  = 1==len(ListaNom)
       print(context)
       return render(request, 'sistemaCS/myCategory.html', context)
 
@@ -280,9 +282,9 @@ def get_users(request):
 def nominate_view(request):
     print('=========NOMINATE==========')
     mycat=request.session['category']
-    if not hasVoted(request.POST.get('username'),request.session['uid'],mycat):
+    try:
       addNom(request.POST.get('username'),request.session['uid'],mycat,request.POST.get('desc'))
-    else:
+    except:
       request.session['hasVoted']=2
     mycat=str(int(mycat)+1)
     request.session['category']=mycat

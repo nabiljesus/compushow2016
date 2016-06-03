@@ -34,19 +34,19 @@
                   <li style="margin: 0" class="NomButton" ><a id="NomButton" class="cd-signin votarbut">¡Nomina!</a></li>
                 </ul>
                 {%if hasVoted %}
-                  <p style="color: red"> Ya existe la nominación. </p>
+                  <p style="color: red"> Ya realizo esa nominacion. </p>
                   <br>
                 {%endif%}
               </div>
               </center> 
             <div class="list" style="margin-bottom: 5%">
-            {% for nom in listaNom %}
+            <!--{% for nom in listaNom %}
 
 
 
 
              <!--href="#/{{item.id}}"-->
-             <a onclick="hideGallery({{ nom.nId }},{{ nom.nImaList }},{{ nom.nRName }},{{ nom.nHas }},{{pageid}},{{nom.nUid}})"
+             <!--<a onclick="hideGallery({{ nom.nId }},{{ nom.nImaList }},{{ nom.nRName }},{{ nom.nHas }},{{pageid}},{{nom.nUid}})"
              class="item item-thumbnail-left">
 
              <img src="/static/{{nom.nFront}}">
@@ -55,8 +55,19 @@
              {%empty%}
              <h2>No hay nominados todavía.</h2>
              <h4>¿Por qué no nominas a alguien?</h4>
-             {%endfor%}
-           </a>
+              </a>
+             {%endfor%}-->
+             <center>
+              <h2>Para esta categoría hay</h2> <h2 style="color: #FFF172;">{{nomsCount}}</h2> <h2>
+
+              {%if isSingular %} 
+                Nominación. 
+              {%else%} 
+                Nominaciones. 
+              {%endif%}
+
+              </h2>
+             </center>
           </div>
           </div>
 
