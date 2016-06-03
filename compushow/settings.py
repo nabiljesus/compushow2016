@@ -71,8 +71,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'compushow.wsgi.application'
 
-STATIC_ROOT = "/var/www/example.com/static/"
+#STATIC_ROOT = "/home/nabil/compushow/static"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

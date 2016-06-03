@@ -1,8 +1,9 @@
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404,render,render_to_response
 
 # Create your views here.
 from django.http import HttpResponse
 from sistemaCS.models import Question
+from django.template import RequestContext
 from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from models import *
@@ -172,7 +173,7 @@ def myCategory(request):
       print(context)
       return render(request, 'sistemaCS/myCategory.html', context)
 
-def addNom(nuid,uid,catId):
+def addNom(nuid,uid,catId,mdesc=""):
   print('Addingo voto ------')
   print(nuid)
   print(uid)
@@ -180,7 +181,7 @@ def addNom(nuid,uid,catId):
   Ccat=Categoria.objects.filter(id=catId).first()
   Uunom=Usuario.objects.filter(uid=nuid).first()
   Uuid=Usuario.objects.filter(uid=uid).first()
-  noms=Nominacion(idcat=Ccat, unom=Uunom, uid=Uuid, desc="")
+  noms=Nominacion(idcat=Ccat, unom=Uunom, uid=Uuid, desc=mdesc)
   noms.save()
   print('SE SUPONE....')
 
@@ -257,7 +258,7 @@ def myCarousel(request):
 def get_users(request):
     print('did it work?')
     q = request.GET.get('term', '')
-    users = Usuario.objects.filter(name__icontains = q )[:20]
+    users = Usuario.objects.filter(name__contains = q )[:20]
     results = []
     for user in users:
         user_json = {}
@@ -275,7 +276,7 @@ def nominate_view(request):
     print('=========NOMINATE==========')
     mycat=request.session['category']
     if not hasVoted(request.POST.get('username'),request.session['uid'],mycat):
-      addNom(request.POST.get('username'),request.session['uid'],mycat)
+      addNom(request.POST.get('username'),request.session['uid'],mycat,request.POST.get('desc'))
     else:
       request.session['hasVoted']=2
     mycat=str(int(mycat)+1)
@@ -284,3 +285,27 @@ def nominate_view(request):
     print(request.GET)
     context = {}
     return HttpResponseRedirect('/sistemaCS/#t'+mycat)
+
+#######Para imagenes
+def list(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('sistemaCS.views.list'))
+    else:
+        form = DocumentForm() # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
+    return render_to_response(
+        'sistemaCS/list.html',
+        {'documents': documents, 'form': form},
+        context_instance=RequestContext(request)
+    )

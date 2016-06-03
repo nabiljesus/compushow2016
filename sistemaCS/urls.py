@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
-
+from django.conf import settings
+from django.conf.urls.static import static
 from sistemaCS import views
 
 urlpatterns = patterns('',
@@ -9,6 +10,7 @@ urlpatterns = patterns('',
     url(r'nominate_view', views.nominate_view, name='nominate_view'),
     url(r'myCategory', views.myCategory, name='category'),
     url(r'myCarousel', views.myCarousel, name='carousel'),
+    url(r'list/', views.list, name='list'),
     # ex: /polls/5/
     url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
     # ex: /polls/5/results/
@@ -16,4 +18,4 @@ urlpatterns = patterns('',
     # ex: /polls/5/vote/
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
     url(r'^get_users/', views.get_users, name='get_users'),
-)
+)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

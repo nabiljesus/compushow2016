@@ -4,7 +4,18 @@ import datetime
 
 from django.utils import timezone
 # Create your models here.
+### Para iamgenes
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
 
+from django import forms
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file',
+        help_text='max. 42 megabytes'
+    )
+###
 #From Tutorial
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
