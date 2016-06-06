@@ -73,6 +73,12 @@ class Voto(models.Model):
     def __str__(self):              # __unicode__ on Python 2
         return repr(self.uid)+"=>"+repr(self.idnom)+"( "+repr(self.idcat)+" )"
 
+class NominacionAdopt(models.Model):
+    idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    name=models.CharField(max_length=200)
+    desc=models.CharField(max_length=200)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.nombre
 
 CATDATA = {
   "1" : {"catName": "adoptado", "catID": "1", "catDesc": "No es computista, pero vive en la sala, seguro se sabe el pensum y tiene hasta la clave del internet del LDC." },

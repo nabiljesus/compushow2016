@@ -162,7 +162,10 @@ def myCategory(request):
     else:
       print('not fucked')
       print(request.session['uid'])
-      mListaNom=get_nom_list(int(catId),request.session['uid'])
+      if catId!='1':
+        mListaNom=get_nom_list(int(catId),request.session['uid'])
+      else:
+        mListaNom=get_nom_list_adopt(int(catId))
       ListaNom = sorted(mListaNom, key=itemgetter('nName')) 
       context['listaNom'] = ListaNom
       if request.session.get('hasVoted'):
@@ -188,6 +191,32 @@ def addNom(nuid,uid,catId,mdesc=""):
   noms=Nominacion(idcat=Ccat, unom=Uunom, uid=Uuid, desc=mdesc)
   noms.save()
   print('SE SUPONE....')
+
+def addNomAdop(name,catId,mdesc=""):
+  print('Addingo voto ------')
+  print(name)
+  print(catId)
+  Ccat=Categoria.objects.filter(id=catId).first()
+  mdesc=unicodedata.normalize('NFD', mdesc).encode('ascii', 'ignore')
+  noms=NominacionAdopt(idcat=Ccat, name=name,desc=mdesc)
+  noms.save()
+  print('SE SUPONE....')
+
+def get_nom_list_adopt(idCat):
+  oListaNom = NominacionAdopt.objects.filter(idcat=idCat)
+  ListaNom = []
+  for myNomi in oListaNom:
+    dNomi = {}
+    dNomi['nId'] = [str(myNomi.id)]
+    dNomi['nName'] = (str(myNomi.name))
+    dNomi['nDesc'] = [str(myNomi.desc)]
+    dNomi['nHas'] = False
+    dNomi['nImaList'] = []
+    dNomi['nFront'] = 'img/none.gif'
+    ListaNom.append(dNomi)
+
+  return ListaNom
+
 
 def get_nom_list(idCat,uid):
   oListaNom = Nominacion.objects.filter(idcat=idCat)
@@ -282,8 +311,14 @@ def get_users(request):
 def nominate_view(request):
     print('=========NOMINATE==========')
     mycat=request.session['category']
+    print(mycat)
+    print(request.POST.get('username'))
+    print(request.POST.get('desc'))
     try:
-      addNom(request.POST.get('username'),request.session['uid'],mycat,request.POST.get('desc'))
+      if mycat=='1':
+        NomAdo=addNomAdop(request.POST.get('username'),mycat,request.POST.get('desc'))
+      else:
+        addNom(request.POST.get('username'),request.session['uid'],mycat,request.POST.get('desc'))
     except:
       request.session['hasVoted']=2
     mycat=str(int(mycat)+1)
