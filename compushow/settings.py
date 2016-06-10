@@ -25,9 +25,12 @@ SECRET_KEY = 'cg$w+%o(m@x!sh2*r!lbzob5p%(q0_krqqt(7!!!r=y0_%1gsp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['*']
+    
+WAITINGMODE = True
+VOTINGMODE = True
+VOTINGENDED = False
+ADMINUID    = 'nabil'
 # Application definition
 
 INSTALLED_APPS = (

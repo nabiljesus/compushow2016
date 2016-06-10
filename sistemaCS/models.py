@@ -68,17 +68,26 @@ class Voto(models.Model):
     class Meta:
         unique_together = (('idcat', 'uid'),)
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    idnom=models.ForeignKey(Nominacion, on_delete=models.CASCADE)
+    unom=models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="votado")
+    uid=models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="votante")
+    def __str__(self):              # __unicode__ on Python 2
+        return repr(self.uid)+"=>"+repr(self.unom)+"( "+repr(self.idcat)+" )"
+
+class VotoAdopt(models.Model):
+    class Meta:
+        unique_together = (('idcat', 'uid'),)
+    idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    namenom=models.CharField(max_length=200)
     uid=models.ForeignKey(Usuario, on_delete=models.CASCADE)
     def __str__(self):              # __unicode__ on Python 2
-        return repr(self.uid)+"=>"+repr(self.idnom)+"( "+repr(self.idcat)+" )"
+        return repr(self.uid)+"=>"+repr(self.namenom)+"( "+repr(self.idcat)+" )"
 
 class NominacionAdopt(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     name=models.CharField(max_length=200)
     desc=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return self.nombre
+        return self.name
 
 CATDATA = {
   "1" : {"catName": "adoptado", "catID": "1", "catDesc": "No es computista, pero vive en la sala, seguro se sabe el pensum y tiene hasta la clave del internet del LDC." },

@@ -158,31 +158,50 @@
                                             </div>
                                             <div class="row">
 
-                                              <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="10%"/>
+                                              <img src="{% static 'img/CEIC.png' %}" alt="CEICLOGO" width="8%"/>
                                             </br>
                                           </div>
                                           <div class="row">
                                             
                                           </div>
+                                            {% if totalizacion %}
+                                              {% if not user.is_authenticated %}
+
+                                                <div class="row">
+                                                    <img src="/static/img/{{leImg}}.jpg" alt="LaTibi" width="200px" style="margin: 0px" />
+                                                </div>
+                                              {% endif %}
+                                            {% endif %}
 
                                           {% if user.is_authenticated %}
                                           {% csrf_token %}
-                                          <div style="margin-top: 3%">
+                                          <div style="margin-top: 2%">
                                             <a  href="/sistemaCS/logout" class="logoutC" >{{request.session.name}} <span class="fa fa-sign-out"></span></a>
+
                                           </div>
                                           {%else%}
                                           <center>
                                             <div class="main-nav">
+                                            {% if totalizacion %}
+                                              <h4>Estamos en el proceso de totalización.</h4>
+                                            {% else %}
                                               <h4>Inicie sessión con su cuenta del LDC o su USB-ID. Recuerde utilizar el formato del carnet, 12-34567 o su nombre de usuario (profesores).</h4>
+                                            {% endif %}
                                               <ul>
-                                                <li><a class="cd-signin" href="#0">Iniciar Sesion</a></li>
+                                                <li><a class="cd-signin" href="#0">Iniciar Sesion {% if totalizacion %} (admin) {% endif %}</a></li>
                                               </ul>
                                             </div>
-                                            {% if wrongData %}
-                                            <p style="color: red"> Datos erroneos </p>
-                                            {% endif %}
-                                            {% if noComputista %}
-                                            <p style="color: red"> Lo lamentamos, solo se permiten computistas. </p>
+                                            {% if adminAccess %}
+                                              {% if wrongData %}
+                                              <p style="color: red"> Datos erroneos </p>
+                                              {% endif %}
+                                              {% if noComputista %}
+                                              <p style="color: red"> Lo lamentamos, solo se permiten computistas. </p>
+                                              {% endif %}
+                                            {% else %}
+                                              {% if notAdmin %}
+                                                <p style="color: red"> Lo lamentamos, estamos en el proceso de totalización. </p>
+                                              {% endif %}
                                             {% endif %}
                                           </center>
                                           {%endif%}
@@ -262,20 +281,21 @@
 <script type="text/javascript">
 
 
-  function hideGallery(id,imgList,name,hasVoted,pId,nuid){
+  function hideGallery(id,imgList,name,desc,hasVoted,pId,nuid,vCount){
     $(".woo").fadeOut("fast");
     setTimeout(
-      function(){showGallery(id,imgList,name,hasVoted,pId,nuid);
+      function(){showGallery(id,imgList,name,desc,hasVoted,pId,nuid,vCount);
       },200); 
     /*Load Ajax*/
   }
-  function showGallery(id,imgList,name,hasVoted,pId,nuid){
+  function showGallery(id,imgList,name,desc,hasVoted,pId,nuid,vCount){
    $(document).ready(function(){
 
         console.log(id);
         console.log(pId);
         console.log(imgList);
         console.log(name);
+        console.log(desc);
         console.log(hasVoted);
         console.log(nuid);
     $.ajax({
@@ -284,8 +304,10 @@
         pId: pId,
         imgList: imgList,
         carNName: name,
+        nDesc   : desc,
         Voted   : hasVoted,
-        nuid     : nuid,
+        nuid    : nuid,
+        vCount  : vCount,
         csrfmiddlewaretoken:'{{ csrf_token }}'
       }, 
       type: "POST",

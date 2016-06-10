@@ -30,44 +30,51 @@
           <div class="col-md-4 col-sm-pull-8">
               <center>
               <div class="main-nav">
-                <ul style="margin: 0">
-                  <li style="margin: 0" class="NomButton" ><a id="NomButton" class="cd-signin votarbut">¡Nomina!</a></li>
-                </ul>
+              {% if not isVoting %}
+
+                  <ul style="margin: 0">
+                    <li style="margin: 0" class="NomButton" ><a id="NomButton" class="cd-signin votarbut">¡Nomina!</a></li>
+                  </ul>
+              {% endif %}
                 {%if hasVoted %}
-                  <p style="color: red"> Ya realizo esa nominacion. </p>
+                  <p style="color: red"> Ya votó en esta categoría. </p>
                   <br>
                 {%endif%}
               </div>
               </center> 
             <div class="list" style="margin-bottom: 5%">
-            <!--{% for nom in listaNom %}
+            {% if isVoting %}
+            {% for nom in listaNom %}
 
 
 
 
              <!--href="#/{{item.id}}"-->
-             <!--<a onclick="hideGallery({{ nom.nId }},{{ nom.nImaList }},{{ nom.nRName }},{{ nom.nHas }},{{pageid}},{{nom.nUid}})"
+             <a onclick="hideGallery({{ nom.nId }},{{ nom.nImaList }},{{ nom.nRName }},{{ nom.nDesc2 }},{{ nom.nHas }},{{pageid}},{{nom.nUid}},{{nom.nSize}})"
              class="item item-thumbnail-left">
 
              <img src="/static/{{nom.nFront}}">
              <h2>{{nom.nName}}</h2>
-             <h4>{{nom.nDesc}}</h4>
+             <h4>{%if isAdmin%}({{nom.nSize}}) votos. -  {%endif%} {{nom.nDesc}}</h4>
              {%empty%}
-             <h2>No hay nominados todavía.</h2>
-             <h4>¿Por qué no nominas a alguien?</h4>
+             <h2>Esta categoría no posee nominaciones</h2>
+             <!--<h4>¿Por qué no nominas a alguien?</h4>-->
               </a>
-             {%endfor%}-->
-             <center>
-              <h2>Para esta categoría hay</h2> <h2 style="color: #FFF172;">{{nomsCount}}</h2> <h2>
+             {%endfor%}
+            {% else %}
 
-              {%if isSingular %} 
-                Nominación. 
-              {%else%} 
-                Nominaciones. 
-              {%endif%}
+               <center>
+                <h2>Para esta categoría hay</h2> <h2 style="color: #FFF172;">{{nomsCount}}</h2> <h2>
 
-              </h2>
-             </center>
+                {%if isSingular %} 
+                  Nominación. 
+                {%else%} 
+                  Nominaciones. 
+                {%endif%}
+
+                </h2>
+               </center>
+            {%endif%}
           </div>
           </div>
 

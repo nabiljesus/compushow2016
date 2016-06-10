@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from models import *
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from django.conf  import settings
 
 from operator import itemgetter
 import ldap
@@ -37,6 +37,9 @@ def index(request):
     else:
       request.session['hasVoted']=request.session['hasVoted']-1
     context = {}
+    context['totalizacion']=settings.WAITINGMODE
+    aux=['tibi1','tibi2','tibi3','tibi4','tibi5','tibi6','tibi7','tibi8','cne']
+    context['leImg']=random.choice(aux)
     return render(request, 'sistemaCS/index.html', context)
 
 def detail(request, question_id):
@@ -64,17 +67,31 @@ def login_view(request):
   request.session['category']='0'
   request.session['fromNominate']=False
   context={}
+
   if request.user.is_authenticated():
     return render(request, 'sistemaCS/index.html', context)
 
 
   print(request.POST)
+  print('leLogin.')
   username = request.POST.get('username', '')
+  context={}
+
   password = request.POST.get('password', '')
   itPassed = False  
-  context  = {'wrongData' : False}
-
+  context['wrongData'] = False
+  context['notAdmin']=False
   context['noComputista']=False
+  context['totalizacion']=settings.WAITINGMODE
+
+
+  context['adminAccess']=settings.WAITINGMODE and (username=='nabil')
+  print('COMPROBANDO EL LOGIN, I GUESS.')
+  if settings.WAITINGMODE and username!='nabil':
+    context['notAdmin']=True
+    print('NO ES ADMIN DAAAAAAAAAAAAAAA')
+    return render(request, 'sistemaCS/index.html', context)
+
   myUser = Usuario.objects.filter(uid=username)
   if not myUser:
     context['noComputista']=True
@@ -108,6 +125,8 @@ def login_view(request):
       # Show an error page
   request.session['name']=myUser.name
   request.session['uid']=myUser.uid
+  aux=['tibi1','tibi2','tibi3','tibi4','tibi5','tibi6','tibi7','tibi8','cne']
+  context['leImg']=random.choice(aux)
   return render(request, 'sistemaCS/index.html', context)
 
 
@@ -154,7 +173,7 @@ def myCategory(request):
     context['pageid'] = catId
     request.session['category']=catId
     if str(request.POST.get('addVote'))=='true':
-      addNom(request.POST.get('nuid'),request.session['uid'],catId)
+      addVote(request.POST.get('nuid'),request.session['uid'],catId)
 
     if 'uid' not in request.session:
       print('yup, fucked up.')
@@ -167,6 +186,7 @@ def myCategory(request):
       else:
         mListaNom=get_nom_list_adopt(int(catId))
       ListaNom = sorted(mListaNom, key=itemgetter('nName')) 
+      print('A LA VIBORA VIBORA DE LA MAR')
       context['listaNom'] = ListaNom
       if request.session.get('hasVoted'):
         if request.session['hasVoted'] > 0:
@@ -176,11 +196,63 @@ def myCategory(request):
         context['hasVoted'] = False
       context['nomsCount']  = str(len(ListaNom))
       context['isSingular']  = 1==len(ListaNom)
+      context['isAdmin']    = request.session['uid']==settings.ADMINUID
+      context['isVoting']  = settings.VOTINGMODE
+      print('POR AQUI PODRAN PASAR')
       print(context)
+      aux=['tibi1','tibi2','tibi3','tibi4','tibi5','tibi6','tibi7','tibi8','cne']
+      context['leImg']=random.choice(aux)
       return render(request, 'sistemaCS/myCategory.html', context)
 
-def addNom(nuid,uid,catId,mdesc=""):
+def getNomsVoteCount(nuid,midCat):
+  print('potaneitor')
+  print(nuid)
+  print(midCat)
+  counter = 0
+  if settings.VOTINGENDED:
+    print('caso0')
+    if midCat==1:
+       counter = VotoAdopt.objects.filter(idcat=midCat).filter(namenom=nuid).count()
+    else:
+       oUser   = Usuario.objects.filter(uid=nuid).first()
+       print(oUser)
+       if oUser:
+        print('----------')
+        counter = Voto.objects.filter(idcat=midCat).filter(unom=oUser).count()
+  else:
+    print('caso1')
+    if midCat==1:
+       counter = NominacionAdopt.objects.filter(idcat=midCat).filter(name=nuid).count()
+    else:
+       oUser   = Usuario.objects.filter(uid=nuid).first()
+       print(oUser)
+       print('----------')
+       if oUser:
+        counter = Nominacion.objects.filter(idcat=midCat).filter(unom=oUser).count()
+  print('lepotato'+repr(counter))
+  return counter
+
+
+def addVote(nuid,uid,catId,mdesc=""):
   print('Addingo voto ------')
+  print(nuid)
+  print(uid)
+  print(catId)
+  Ccat=Categoria.objects.filter(id=catId).first()
+  if catId=='1':
+    print('es adoptaod')
+    Uuid=Usuario.objects.filter(uid=uid).first()
+    vote=VotoAdopt(idcat=Ccat, namenom=nuid, uid=Uuid)
+    print('agregado......')
+  else:
+    Uunom=Usuario.objects.filter(uid=nuid).first()
+    Uuid=Usuario.objects.filter(uid=uid).first()
+    vote=Voto(idcat=Ccat, unom=Uunom, uid=Uuid)
+  vote.save()
+  print('SE SUPONE....')
+
+def addNom(nuid,uid,catId,mdesc=""):
+  print('Addingo nom ------')
   print(nuid)
   print(uid)
   print(catId)
@@ -193,7 +265,7 @@ def addNom(nuid,uid,catId,mdesc=""):
   print('SE SUPONE....')
 
 def addNomAdop(name,catId,mdesc=""):
-  print('Addingo voto ------')
+  print('Addingo nom a ------')
   print(name)
   print(catId)
   Ccat=Categoria.objects.filter(id=catId).first()
@@ -207,13 +279,21 @@ def get_nom_list_adopt(idCat):
   ListaNom = []
   for myNomi in oListaNom:
     dNomi = {}
-    dNomi['nId'] = [str(myNomi.id)]
+    dNomi['nId'] = str(myNomi.id)
     dNomi['nName'] = (str(myNomi.name))
-    dNomi['nDesc'] = [str(myNomi.desc)]
-    dNomi['nHas'] = False
-    dNomi['nImaList'] = []
+    dNomi['nRName'] = repr(str(myNomi.name))
+    dNomi['nUid'] = repr(str(myNomi.name))
+    if myNomi.desc:
+      dNomi['nDesc'] = str(myNomi.desc)
+      dNomi['nDesc2'] = repr(str(myNomi.desc))
+    else:
+      dNomi['nDesc'] = ''
+      dNomi['nDesc2'] = repr("")
+    dNomi['nHas'] = 'false'
+    dNomi['nImaList'] = ['img/noimg.png']
     dNomi['nFront'] = 'img/none.gif'
-    ListaNom.append(dNomi)
+    dNomi['nSize'] = getNomsVoteCount(myNomi.name,idCat)
+    ListaNom+=[dNomi]
 
   return ListaNom
 
@@ -228,6 +308,7 @@ def get_nom_list(idCat,uid):
       dNomi['nId'] = [str(myNomi.id)]
       dNomi['nName'] = (str(elNomi))
       dNomi['nUid'] = repr(str(myNomi.unom))
+      dNomi['nUid2'] = str(myNomi.unom)
       dNomi['nRName'] = repr(str(elNomi))
       dNomi['nDesc'] = [str(myNomi.desc)]
       dNomi['nHas'] = myNomi.uid.uid == uid
@@ -242,11 +323,14 @@ def get_nom_list(idCat,uid):
   myList = []
   for key in ListaNom.keys():
     tempDic = ListaNom[key]
+    tempDic['nSize'] = getNomsVoteCount(tempDic['nUid2'],idCat)
     aux=filter(lambda w: w!="", tempDic['nDesc'])
     if aux:
       tempDic['nDesc']=random.choice(aux)
+      tempDic['nDesc2']=repr(random.choice(aux))
     else:
       tempDic['nDesc']=""
+      tempDic['nDesc2']=repr("")
     tempDic['nImaList']=[]
     for cId in tempDic['nId']:
       omisImagenes=ImgNominacion.objects.filter(idnom=cId)
@@ -266,24 +350,45 @@ def get_nom_list(idCat,uid):
     myList+=[tempDic]
   return myList
 
-def hasVoted(myuid,myunom,midCat):
-  oListaNom = Nominacion.objects.filter(idcat=midCat).filter(unom=myunom).filter(uid=myuid)
-  hasVoted = False
-  if oListaNom.first():  #Si no es vacia
-    hasVoted = True
-  return hasVoted
+def hasVoted(myuid,midCat):
+  print('HA VOTADO-------------------?')
+  print(myuid)
+  print(midCat)
+  oUser = Usuario.objects.filter(uid=myuid).first()
+  ithasVoted = False
+  oCat = Categoria.objects.filter(id=midCat).first()
+  print(oCat)
+  if oUser:
+    if midCat=='1':
+       print('en adoptado?')
+       oListaVot = VotoAdopt.objects.filter(idcat=oCat).filter(uid=oUser).first()
+    else:
+       oListaVot = Voto.objects.filter(idcat=oCat).filter(uid=oUser).first()
+
+    if oListaVot:
+      ithasVoted = True
+
+  return ithasVoted
 
 @ensure_csrf_cookie
 def myCarousel(request):
     print('=====CAROUSEL========')
     print(request.POST)
+    votedVar=False
     carId= str(request.POST.get('carId'))
-    context = {'carId' : carId,
+    if hasVoted(request.session['uid'],request.POST.get('pId')):
+      votedVar = True
+
+    context = {'carId'    : carId,
                'carNName' : str(request.POST.get('carNName')),
+               'carNDesc' : str(request.POST.get('nDesc')),
                'imgList'  : request.POST.getlist('imgList[]'),
-               'Voted' : str(request.POST.get('Voted'))=='true',
-               'pId'   : str(int(request.POST.get('pId'))+1),
-               'nuid'   : str(request.POST.get('nuid'))}
+               'Voted'    : votedVar,
+               'pId'      : str(int(request.POST.get('pId'))+1),
+               'cId'      : str(int(request.POST.get('pId'))),
+               'isAdmin'  : request.session['uid']==settings.ADMINUID,
+               'nSize'    :  str(request.POST.get('vCount')),
+               'nuid'     : str(request.POST.get('nuid'))}
     print(context)
     return render(request, 'sistemaCS/myCarousel.html', context)
 
