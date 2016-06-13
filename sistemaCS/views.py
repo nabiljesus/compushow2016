@@ -85,9 +85,9 @@ def login_view(request):
   context['totalizacion']=settings.WAITINGMODE
 
 
-  context['adminAccess']=settings.WAITINGMODE and (username=='nabil')
+  context['adminAccess']=settings.WAITINGMODE and (username==settings.ADMINUID)
   print('COMPROBANDO EL LOGIN, I GUESS.')
-  if settings.WAITINGMODE and username!='nabil':
+  if settings.WAITINGMODE and username!=settings.ADMINUID:
     context['notAdmin']=True
     print('NO ES ADMIN DAAAAAAAAAAAAAAA')
     return render(request, 'sistemaCS/index.html', context)
