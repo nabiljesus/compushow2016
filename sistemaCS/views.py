@@ -335,8 +335,9 @@ def get_nom_list(idCat,uid):
     for cId in tempDic['nId']:
       omisImagenes=ImgNominacion.objects.filter(idnom=cId)
       for img in omisImagenes:
-        aux="catImgs/"+myNomi.idcat.nombre+"/"+str(img.img)
-        tempDic['nImaList']+=[str(aux)]
+        #aux="catImgs/"+myNomi.idcat.nombre+"/"+str(img.img)
+        aux="catImgs/"+str(img.img)
+	tempDic['nImaList']+=[str(aux)]
     tempDic['nId']=tempDic['nId'][0]
     if tempDic['nImaList']:
       tempDic['nFront']=random.choice(tempDic['nImaList'])
