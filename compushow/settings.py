@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ['*']
 WAITINGMODE = True
 VOTINGMODE = True
 VOTINGENDED = False
-ADMINUID    = '11-11264'
+#ADMINUID    = '11-11264'
+ADMINUID   = 'nabil'
 # Application definition
 
 INSTALLED_APPS = (
