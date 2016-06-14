@@ -290,8 +290,20 @@ def get_nom_list_adopt(idCat):
       dNomi['nDesc'] = ''
       dNomi['nDesc2'] = repr("")
     dNomi['nHas'] = 'false'
-    dNomi['nImaList'] = ['img/noimg.png']
-    dNomi['nFront'] = 'img/none.gif'
+    print('DAAAAAAAAAAAAAAAAYUM')
+    omisImagenes=ImgAdopt.objects.filter(idnom=myNomi)
+    print(omisImagenes)
+    dNomi['nImaList']=[]
+    for img in omisImagenes:
+      aux="catImgs/"+str(img.img)
+      dNomi['nImaList']+=[str(aux)]
+    if dNomi['nImaList']:
+      dNomi['nFront']=random.choice(dNomi['nImaList'])
+    else:
+      dNomi['nImaList']=['img/noimg.png']
+      dNomi['nFront']='img/none.gif'
+
+
     dNomi['nSize'] = getNomsVoteCount(myNomi.name,idCat)
     ListaNom+=[dNomi]
 
@@ -335,9 +347,8 @@ def get_nom_list(idCat,uid):
     for cId in tempDic['nId']:
       omisImagenes=ImgNominacion.objects.filter(idnom=cId)
       for img in omisImagenes:
-        #aux="catImgs/"+myNomi.idcat.nombre+"/"+str(img.img)
         aux="catImgs/"+str(img.img)
-	tempDic['nImaList']+=[str(aux)]
+        tempDic['nImaList']+=[str(aux)]
     tempDic['nId']=tempDic['nId'][0]
     if tempDic['nImaList']:
       tempDic['nFront']=random.choice(tempDic['nImaList'])
