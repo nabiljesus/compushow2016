@@ -57,9 +57,23 @@ class Nominacion(models.Model):
     def __str__(self):              # __unicode__ on Python 2
         return repr(self.uid)+"=>"+repr(self.unom)+"( "+repr(self.idcat)+" ) - "+repr(self.desc)+" "+repr(self.id)
 
+class NominacionAdopt(models.Model):
+    idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    name=models.CharField(max_length=200)
+    desc=models.CharField(max_length=200)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name
+
 class ImgNominacion(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     idnom=models.ForeignKey(Nominacion, on_delete=models.CASCADE)
+    img=models.CharField(max_length=200)
+    def __str__(self):              # __unicode__ on Python 2
+        return repr(self.img)
+
+class ImgAdopt(models.Model):
+    idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    idnom=models.ForeignKey(NominacionAdopt, on_delete=models.CASCADE)
     img=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
         return repr(self.img)
@@ -82,12 +96,7 @@ class VotoAdopt(models.Model):
     def __str__(self):              # __unicode__ on Python 2
         return repr(self.uid)+"=>"+repr(self.namenom)+"( "+repr(self.idcat)+" )"
 
-class NominacionAdopt(models.Model):
-    idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    name=models.CharField(max_length=200)
-    desc=models.CharField(max_length=200)
-    def __str__(self):              # __unicode__ on Python 2
-        return self.name
+
 
 CATDATA = {
   "1" : {"catName": "adoptado", "catID": "1", "catDesc": "No es computista, pero vive en la sala, seguro se sabe el pensum y tiene hasta la clave del internet del LDC." },
