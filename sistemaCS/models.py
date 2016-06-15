@@ -38,7 +38,7 @@ class Choice(models.Model):
 class Categoria(models.Model):
     nombre=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return self.nombre
+        return str(self.nombre)
 
 class Usuario(models.Model):
     uid=models.CharField(max_length=200,primary_key=True)
@@ -55,21 +55,21 @@ class Nominacion(models.Model):
     uid=models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="nominante")
     desc=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return repr(self.unom.name)+"( "+repr(self.idcat.nombre)+" ) - "+repr(self.desc)+" - "+repr(self.id)
-
+        return str(self.unom.name)+"( "+str(self.idcat.nombre)+" ) - "+str(self.desc)+" - "+str(self.id)
+str
 class NominacionAdopt(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     name=models.CharField(max_length=200)
     desc=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return self.name
+        return str(self.name)
 
 class ImgNominacion(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     idnom=models.ForeignKey(Nominacion, on_delete=models.CASCADE)
     img=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return repr(self.idcat.nombre)+" "+repr(self.img)+" "+repr(self.idnom.name)
+        return str(self.idcat.nombre)+" "+str(self.img)+" "+str(self.idnom.name)
 
 class ImgAdopt(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
