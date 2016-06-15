@@ -1,0 +1,107 @@
+1 | 11-10856   | Jesus Antonio Requena Valladares
+        1 | 13-03133   | Jogsana Maria Carvallo Castellanos
+        1 | 13-10625   | Gabriel Eduardo Gutierrez Garcia
+        1 | 13-11030   | Jean Carlo Alejandro Ovalles Loyo
+        1 | 13-11170   | Jesus Enrique Ramirez Serrano
+        2 | 09-11133   | Jorge Luis Leon Gutierrez
+        2 | 11-10058   | Domingo Enrique Arteaga Gutierrez
+        2 | 12-10774   | Miguel Angel Parra Salgado
+        2 | 12-11247   | Andres Eduardo Rocha Ferrer
+        2 | augusto    | Augusto Guillermo Hidalgo Bravo
+        3 | 09-10093   | Neylin Adriana Belisario Sanjuan
+        3 | 10-10179   | Emmanuel Jose de Aguiar Silva
+        3 | 11-10103   | Guillermo Jose Betancourt Garcia
+        3 | 12-10903   | Gianni Antonio Manilia Di Tommaso
+        3 | 13-10838   | Fabiola Mercedes Martinez Perez
+        4 | 10-10193   | Mathieu Enrique de Valery Fernandez
+        4 | 12-10855   | Edwar Joel Yepez Paredes
+        4 | 13-10398   | Miguel Angel Dos Reis de Nobrega
+        4 | nabil      | Nabil Jesus
+        5 | 10-10305   | Josif Alesandro Gonzalez Gonzalez
+        5 | 13-10006   | Jose Luis Acevedo Salazar
+        5 | 13-10398   | Miguel Angel Dos Reis de Nobrega
+        5 | 13-11303   | Abelardo Jose Salazar Patino
+        6 | 06-40232   | Hetsy Milagros Rodriguez Viafara
+        6 | 10-11246   | Barbara MacArena Hernandez Ledon
+        6 | 11-10979   | Daniela Ohana Socas Gil
+        6 | 13-10838   | Fabiola Mercedes Martinez Perez
+        6 | gkufatty   | Genesis del Valle Kufatty Anton
+        7 | 10-10353   | Andres Rafael Hernandez Monterola
+        7 | 11-10058   | Domingo Enrique Arteaga Gutierrez
+        7 | 11-11264   | Oscar Enrique Guillen Rodriguez
+        7 | 12-10240   | Benjamin Amos Amos Carta
+        7 | 13-10006   | Jose Luis Acevedo Salazar
+        8 | 10-10193   | Mathieu Enrique de Valery Fernandez
+        8 | 10-10824   | Christopher Alexander Flores Bracho
+        8 | 11-10106   | Emilio Blanco Kobernyk
+        8 | 12-11247   | Andres Eduardo Rocha Ferrer
+        8 | hgoncalves | LDC - Hector Goncalves
+        9 | 10-10122   | Maria Esther Carrillo Grasso
+        9 | 12-10613   | Lalezka Isabel Duque Contreras
+        9 | 13-10780   | Maria Fernanda MacHado Pena
+        9 | 13-11086   | Aida del Carmen Perez Campos
+        9 | marisela   | Marisela Andrea del Valle Morillo
+       10 | 11-10328   | Monica Andreina Figuera Yuncosa
+       10 | 12-10116   | Gabriela del Carmen Diaz Marin
+       10 | 12-11091   | Alessandra Carina Marrero Bartolucci
+       10 | 13-10006   | Jose Luis Acevedo Salazar
+       10 | 13-10838   | Fabiola Mercedes Martinez Perez
+       11 | 11-10103   | Guillermo Jose Betancourt Garcia
+       11 | 12-10855   | Edwar Joel Yepez Paredes
+       11 | 12-11247   | Andres Eduardo Rocha Ferrer
+       11 | gkufatty   | Genesis del Valle Kufatty Anton
+       12 | 09-10797   | Nelson Avelino Saturno Teles
+       12 | 10-11147   | Maria Alexandra Bracamonte Quintero
+       12 | 11-10874   | Kervyn Johan Rivero Mujica
+       12 | augusto    | Augusto Guillermo Hidalgo Bravo
+       13 | 12-10561   | Pablo Ricardo Maldonado Montilva
+       13 | 12-10771   | David Alejandro Atias Martinez
+       13 | 12-10909   | Marcos Arturo Jota Caraballo
+       13 | 13-11264   | Rubmary Daribeth Rojas Linarez
+       14 | 10-10290   | Arleyn Yoandra Goncalves Lorca
+       14 | 10-10385   | Gabriela Claret Limonta Marquez
+       14 | 12-10644   | Amanda de Jesus Camacho Rolon
+       14 | 13-11264   | Rubmary Daribeth Rojas Linarez
+       14 | gkufatty   | Genesis del Valle Kufatty Anton
+       15 | 11-10851   | Patricia Estefani Reinoso Arevalo
+       15 | 12-11091   | Alessandra Carina Marrero Bartolucci
+       15 | augusto    | Augusto Guillermo Hidalgo Bravo
+       15 | marisela   | Marisela Andrea del Valle Morillo
+       16 | 11-10104   | Cristina Elena Betancourt MacEro
+       16 | 12-10116   | Gabriela del Carmen Diaz Marin
+       16 | 12-11250   | Natascha Sinai Gamboa Gomes
+       16 | 14-10294   | Maria Gabriela de Valery
+       16 | marisela   | Marisela Andrea del Valle Morillo
+       17 | adiserio   | Angela Di Serio Iuorno
+       17 | cchang     | Carolina Chang Tovar
+       17 | clollett   | Catherine Elena Lollett Paraponiaris
+       17 | emhn       | Ernesto Miguel Hernandez Novich
+       17 | rmonascal  | Ricardo Rafael Monascal Caso
+       18 | 09-10797   | Nelson Avelino Saturno Teles
+       18 | 10-10179   | Emmanuel Jose de Aguiar Silva
+       18 | 10-10193   | Mathieu Enrique de Valery Fernandez
+       18 | 12-11281   | Diego Daniel Pedroza Perez
+       18 | augusto    | Augusto Guillermo Hidalgo Bravo
+       19 | 11-11264   | Oscar Enrique Guillen Rodriguez
+       19 | 12-10967   | Alfredo Jose Fanghella Valero
+       19 | 13-11264   | Rubmary Daribeth Rojas Linarez
+       19 | augusto    | Augusto Guillermo Hidalgo Bravo
+       19 | mathias    | Mathias Alejandro San Miguel Lopez
+       20 | 10-10193   | Mathieu Enrique de Valery Fernandez
+       20 | 10-10642   | Roberto Antonio Romero Barrientos
+       20 | 12-10116   | Gabriela del Carmen Diaz Marin
+       20 | 14-10294   | Maria Gabriela de Valery
+       20 | pablodbc   | Pablo Dario Betancourt Castro
+       21 | DELU       | Grupo de Desarrollo de Experiencias Ludicas (DELU)
+       21 | GIA        | Grupo de Inteligencia Artificial (GIA)
+       21 | LDC        | Laboratorio Docente de Computacion (LDC)
+       21 | MAC        | Mantenimiento de Aulas Computarizadas (MAC)
+       21 | RAM        | Rubmary, Augusto y Mathias (RAM)
+       22 | 09-11133   | Jorge Luis Leon Gutierrez
+       22 | 10-10824   | Christopher Alexander Flores Bracho
+       22 | 11-10476   | Gabriel Enrique Iglesias Monedero
+       22 | 11-10874   | Kervyn Johan Rivero Mujica
+       22 | 12-10941   | Norelys Marian Rumbos Carrasco
+
+
+ select idcat_id,unom_id,name,id from "sistemaCS_usuario" INNER JOIN "sistemaCS_nominacion" ON "sistemaCS_usuario".uid = "sistemaCS_nominacion".unom_id GROUP BY unom_id,name,idcat_id,id ORDER BY idcat_id;
