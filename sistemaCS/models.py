@@ -69,7 +69,7 @@ class ImgNominacion(models.Model):
     idnom=models.ForeignKey(Nominacion, on_delete=models.CASCADE)
     img=models.CharField(max_length=200)
     def __str__(self):              # __unicode__ on Python 2
-        return str(self.idcat.nombre)+" "+str(self.img)+" "+str(self.idnom.name)
+        return str(self.idcat.nombre)+" "+str(self.img)+" "+str(self.idnom)
 
 class ImgAdopt(models.Model):
     idcat=models.ForeignKey(Categoria, on_delete=models.CASCADE)
