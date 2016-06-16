@@ -20,4 +20,5 @@ from sistemaCS.views import *
 urlpatterns = patterns('',
     url(r'^sistemaCS/', include('sistemaCS.urls', namespace="sistemaCS")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('sistemaCS.urls', namespace="sistemaCS2")),
 )
