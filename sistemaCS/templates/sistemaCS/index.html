@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{% static 'css/tooltip.css' %}"> <!-- Gem style -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Gem style -->
   <link rel="stylesheet" href="{% static 'css/style2.css' %}"> <!-- Gem style -->
+  <link rel="stylesheet" href="{% static 'css/moonfont.css' %}"> <!-- Gem style -->
   <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" type="text/css" media="all"> <!-- Gem style -->
   <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
   <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -115,28 +116,28 @@
                                          <ul  style="overflow-y: scroll;  overflow-x: hidden">
                                            {% if user.is_authenticated %}
                                            <a rel="tooltip" title="Inicio" data-target="#my-page" href="#t1"><li class="icon fa fa-home" id="ts1"></li></a>
-                                           <a rel="tooltip" title="CompuAdoptado" class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon fa fa-blind" id="ts2"></li></a>
-                                           <a rel="tooltip" title="CompuBully" class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa fa-creative-commons" id="ts3"></li></a>
-                                           <a rel="tooltip" title="CompuButt" class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa fa-television" id="ts4"></li></a>
-                                           <a rel="tooltip" title="CompuCartoon" class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon fa fa-tint " id="ts5"></li></a>
-                                           <a rel="tooltip" title="CompuChancero" class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon fa fa-female" id="ts6"></li></a>
-                                           <a rel="tooltip" title="CompuComadre" class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon fa fa-male" id="ts7"></li></a>
-                                           <a rel="tooltip" title="CompuCompadre" class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon fa fa-wheelchair-alt " id="ts8"></li></a>
-                                           <a rel="tooltip" title="CompuCono" class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon fa fa-thumbs-down" id="ts9"></li></a>
-                                           <a rel="tooltip" title="CompuCuaima" class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon fa fa-star" id="ts10"></li></a>
-                                           <a rel="tooltip" title="CompuCuchi" class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon fa fa-times " id="ts11"></li></a>
-                                           <a rel="tooltip" title="CompuFalso" class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon fa fa-hand-rock-o" id="ts12"></li></a>
-                                           <a rel="tooltip" title="CompuFitness" class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon fa fa-cutlery" id="ts13"></li></a>
-                                           <a rel="tooltip" title="CompuGordito" class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon fa fa-dribbble" id="ts14"></li></a>
-                                           <a rel="tooltip" title="CompuLolas" class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon fa fa-heart" id="ts15"></li></a>
-                                           <a rel="tooltip" title="CompuLove" class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon fa fa-fire" id="ts16"></li></a>
-                                           <a rel="tooltip" title="CompuMami" class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon fa fa-coffee" id="ts17"></li></a>
-                                           <a rel="tooltip" title="CompuMaster" class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon fa fa-male" id="ts18"></li></a>
-                                           <a rel="tooltip" title="CompuPapi" class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon fa fa-keyboard-o" id="ts19"></li></a>
-                                           <a rel="tooltip" title="CompuPro" class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon fa fa-blind" id="ts20"></li></a>
-                                           <a rel="tooltip" title="CompuProductista" class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon fa fa-users" id="ts21"></li></a>
+                                           <a rel="tooltip" title="CompuAdoptado" class="pL" destino="2" data-target="#my-page" href="#t2"><li class="icon icon-adoptado" id="ts2"></li></a>
+                                           <a rel="tooltip" title="CompuBully" class="pL" destino="3" data-target="#my-page" href="#t3"><li class="icon fa icon-bully" id="ts3"></li></a>
+                                           <a rel="tooltip" title="CompuButt" class="pL" destino="4" data-target="#my-page" href="#t4"><li class="icon fa icon-butt" id="ts4"></li></a>
+                                           <a rel="tooltip" title="CompuCartoon" class="pL" destino="5" data-target="#my-page" href="#t5"><li class="icon icon-cartoon " id="ts5"></li></a>
+                                           <a rel="tooltip" title="CompuChancero" class="pL" destino="6" data-target="#my-page" href="#t6"><li class="icon icon-chancero" id="ts6"></li></a>
+                                           <a rel="tooltip" title="CompuComadre" class="pL" destino="7" data-target="#my-page" href="#t7"><li class="icon icon-woman" id="ts7"></li></a>
+                                           <a rel="tooltip" title="CompuCompadre" class="pL" destino="8" data-target="#my-page" href="#t8"><li class="icon icon-man" id="ts8"></li></a>
+                                           <a rel="tooltip" title="CompuCono" class="pL" destino="9" data-target="#my-page" href="#t9"><li class="icon icon-traffic-cone" id="ts9"></li></a>
+                                           <a rel="tooltip" title="CompuCuaima" class="pL" destino="10" data-target="#my-page" href="#t10"><li class="icon icon-cuaima" id="ts10"></li></a>
+                                           <a rel="tooltip" title="CompuCuchi" class="pL" destino="11" data-target="#my-page" href="#t11"><li class="icon icon-cuchi" id="ts11"></li></a>
+                                           <a rel="tooltip" title="CompuFalso" class="pL" destino="12" data-target="#my-page" href="#t12"><li class="icon icon-cross" id="ts12"></li></a>
+                                           <a rel="tooltip" title="CompuFitness" class="pL" destino="13" data-target="#my-page" href="#t13"><li class="icon icon-fitness" id="ts13"></li></a>
+                                           <a rel="tooltip" title="CompuGordito" class="pL" destino="14" data-target="#my-page" href="#t14"><li class="icon icon-gordito" id="ts14"></li></a>
+                                           <a rel="tooltip" title="CompuLolas" class="pL" destino="15" data-target="#my-page" href="#t15"><li class="icon icon-lolas" id="ts15"></li></a>
+                                           <a rel="tooltip" title="CompuLove" class="pL" destino="16" data-target="#my-page" href="#t16"><li class="icon icon-heart" id="ts16"></li></a>
+                                           <a rel="tooltip" title="CompuMami" class="pL" destino="17" data-target="#my-page" href="#t17"><li class="icon icon-mami" id="ts17"></li></a>
+                                           <a rel="tooltip" title="CompuMaster" class="pL" destino="18" data-target="#my-page" href="#t18"><li class="icon icon-master" id="ts18"></li></a>
+                                           <a rel="tooltip" title="CompuPapi" class="pL" destino="19" data-target="#my-page" href="#t19"><li class="icon icon-papi" id="ts19"></li></a>
+                                           <a rel="tooltip" title="CompuPro" class="pL" destino="20" data-target="#my-page" href="#t20"><li class="icon icon-pro" id="ts20"></li></a>
+                                           <a rel="tooltip" title="CompuProductista" class="pL" destino="21" data-target="#my-page" href="#t21"><li class="icon icon-productista" id="ts21"></li></a>
                                            <a rel="tooltip" title="CompuTeam" class="pL" destino="22" data-target="#my-page" href="#t22"><li class="icon fa fa-users" id="ts22"></li></a>
-                                           <a rel="tooltip" title="CompuTukky" class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon fa fa-users" id="ts23"></li></a>
+                                           <a rel="tooltip" title="CompuTukky" class="pL" destino="23" data-target="#my-page" href="#t23"><li class="icon icon-motorcycle" id="ts23"></li></a>
                                            <hr>
                                            <a rel="tooltip" title="Salir" href="/sistemaCS/logout"><li class="icon fa fa-sign-out" id="ts21"></li></a>
                                            {% endif %}
